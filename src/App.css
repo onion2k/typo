@@ -60,6 +60,7 @@
 
 .typo.copy .typo-css {
   color: red;
+  letter-spacing: 20px;
 }
 
 .dividerMouseArea {
