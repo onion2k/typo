@@ -1,33 +1,52 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.typo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2.0rem + 25vmin);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.typo.copy {
+  z-index: 2;
+  background-color: rgba(65,49,57,0.9);
+}
+
+.dividerMouseArea {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 20px;
+  display: flex;
+  background: linear-gradient(to left, transparent, transparent 9px, white 9px, white 11px, transparent 11px);
+  align-items: center;
+}
+
+.handle {
+  width: 16px;
+  border: 2px solid black;
+  height: 40px;
+  border-radius: 10px;
+  background-color: white;
 }

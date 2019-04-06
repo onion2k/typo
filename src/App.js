@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SplitContext from './Split';
+import Typo from './Typo';
+import Divider from './Divider';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+export default function App() {
+  let [split, setSplit] = useState(300);
+  return (
+    <div className="App">
+      <SplitContext.Provider value={{split: split, update: setSplit}}>
+        <Typo original />
+        <Typo copy />
+        <Divider />
+      </SplitContext.Provider>
+    </div>
+  );
 }
-
-export default App;
