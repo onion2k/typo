@@ -6,14 +6,16 @@ export default function Typo(data) {
   
   let clipPath = '';
   if (data.copy) {
-    clipPath = `polygon(0 0, ${split.split}px 0, ${split.split}px 100vh, 0 100vh)`;
+    clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${split.split}px 100vh)`;
   }
 
   return (
     <div
-    className={`typo ${data.copy?"copy":""}`}
+    className={`typo ${data.copy?"copy":"original"}`}
     style={{ clipPath }}>
-      Ooer
+      <div className="typo-css">
+        Ooer
+      </div>
     </div>
   );
 }

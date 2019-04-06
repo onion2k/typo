@@ -1,3 +1,12 @@
+
+@font-face {
+  font-family: "julietta-messie-ooer";
+  src: url("./fonts/julietta-messie-ooer.woff2") format("woff2"),
+    url("./fonts/julietta-messie-ooer.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   position: relative;
   width: 100vw;
@@ -9,6 +18,7 @@
 }
 
 .typo {
+  background-color: #282c34;
   position: absolute;
   top: 0;
   left: 0;
@@ -17,12 +27,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(2.0rem + 25vmin);
+}
+
+.typo .typo-css {
+  font-family: "julietta-messie-ooer";
+  font-size: calc(2.0rem + 70vmin);
+}
+
+.typo.original:before {
+  content: 'Original';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: Arial;
+  font-size: 2.0rem;
+}
+
+
+.typo.copy:after {
+  content: 'Copy';
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-family: Arial;
+  font-size: 2.0rem;
 }
 
 .typo.copy {
   z-index: 2;
-  background-color: rgba(65,49,57,0.9);
+  background-color: #282c34;
+}
+
+.typo.copy .typo-css {
+  color: red;
 }
 
 .dividerMouseArea {
@@ -39,7 +76,16 @@
   z-index: 4;
   width: 20px;
   display: flex;
-  background: linear-gradient(to left, transparent, transparent 9px, white 9px, white 11px, transparent 11px);
+  background: linear-gradient(
+    to right, 
+    transparent, 
+    transparent 8px, 
+    black 8px, 
+    white 9px, 
+    white 11px,
+    black 11px, 
+    transparent 12px
+  );
   align-items: center;
 }
 

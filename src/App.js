@@ -9,8 +9,8 @@ export default function App() {
   return (
     <div className="App">
       <SplitContext.Provider value={{split: split, update: setSplit}}>
-        <Typo original />
         <Typo copy />
+        <Typo original />
         <Divider />
       </SplitContext.Provider>
     </div>
