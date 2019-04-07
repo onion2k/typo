@@ -9,6 +9,7 @@ export default function App() {
   let [split, setSplit] = useState(300);
   return (
     <div className="App">
+      <header className="typo-header">Typo</header>
       <SplitContext.Provider value={{split: split, update: setSplit}}>
         <div className="typo-splitscreen">
           <Typo copy />

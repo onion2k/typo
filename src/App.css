@@ -16,13 +16,21 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  grid-template-areas: "typo typo" "left right";
+  grid-template-rows: 60px 3fr 2fr;
+  grid-template-areas: "header header" "typo typo" "left right";
+}
+
+.typo-header {
+  grid-area: header;
+  padding: 10px;
+  border-bottom: 1px solid white;
 }
 
 .typo-splitscreen {
   position: relative;
   grid-area: typo;
+  border-bottom: 1px solid white;
+  overflow: hidden;
 }
 
 .controller:first-of-type {
