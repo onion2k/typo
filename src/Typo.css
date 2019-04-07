@@ -1,0 +1,25 @@
+
+.typo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+}
+
+.typo.copy {
+  z-index: 2;
+}
+
+.typo > div.content {
+  font-family: "julietta-messie-ooer";
+  font-size: calc(2.0rem + 50vmin);
+}
+
+.typo.copy > div.content {
+  color: red;
+}

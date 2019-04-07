@@ -1,0 +1,10 @@
+
+.typo .typo-css {
+  font-family: "julietta-messie-ooer";
+  font-size: calc(2.0rem + 70vmin);
+}
+
+.typo.copy .typo-css {
+  color: red;
+  letter-spacing: 20px;
+}

@@ -9,10 +9,14 @@ export default function App() {
   return (
     <div className="App">
       <SplitContext.Provider value={{split: split, update: setSplit}}>
-        <Typo copy />
-        <Typo original />
-        <Divider />
+        <div className="typo-splitscreen">
+          <Typo copy />
+          <Typo original />
+          <Divider />
+        </div>
       </SplitContext.Provider>
+      <div className="controller left">Left</div>
+      <div className="controller right">Right</div>
     </div>
   );
 }
