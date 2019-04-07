@@ -17,13 +17,8 @@ export default function Controller(data) {
     data.update({...data.style, fontFamily: e.target.value});
   }
   
-  let style = {};
-  if (data.original) {
-    style.borderRight = "3px solid #282c34";
-  }
-
   return (
-    <div className="controller" style={style}>
+    <div className="controller">
       <label htmlFor="color">Color</label>
       <input name="color" type="text" onChange={updateColor} defaultValue={data.style.color} />
       <label htmlFor="size">Size</label>
