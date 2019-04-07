@@ -12,8 +12,8 @@ export default function App() {
       <header className="typo-header">Typo</header>
       <SplitContext.Provider value={{split: split, update: setSplit}}>
         <div className="typo-splitscreen">
-          <Typo copy />
-          <Typo original />
+          <Typo copy title="Copy" />
+          <Typo original title="Original" />
           <Divider />
         </div>
       </SplitContext.Provider>

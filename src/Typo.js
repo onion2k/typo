@@ -16,6 +16,7 @@ export default function Typo(data) {
     <div
     className={`typo ${data.copy?"copy":"original"}`}
     style={{ clipPath }}>
+      <span className="title">{data.title}</span>
       <div className="content">
         Ooer
       </div>
