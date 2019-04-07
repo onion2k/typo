@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SplitContext from './Split';
 import Typo from './Typo';
+import Controller from './Controller';
 import Divider from './Divider';
 import './App.css';
 
@@ -15,8 +16,8 @@ export default function App() {
           <Divider />
         </div>
       </SplitContext.Provider>
-      <div className="controller left">Left</div>
-      <div className="controller right">Right</div>
+      <Controller />
+      <Controller />
     </div>
   );
 }
