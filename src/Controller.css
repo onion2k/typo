@@ -1,5 +1,29 @@
 
 .controller {
-  padding: 10px;
-  font-size: 1rem;
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  font-size: 11px;
+  font-family: Courier, monospace;
+  text-transform: lowercase;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-auto-rows: 20px;
+  grid-gap: 0;
+  align-items: center;
+}
+
+.controller > label {
+  color: red;
+}
+
+.controller > label:after {
+  content: ':';
+}
+
+.controller > input {
+  color: black;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 11px;
+  font-family: Courier, monospace;
 }

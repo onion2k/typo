@@ -7,11 +7,19 @@ import './App.css';
 
 export default function App() {
   let [split, setSplit] = useState(300);
-  let [original, setOriginal] = useState({});
-  let [copy, setCopy] = useState({});
+  let [original, setOriginal] = useState({
+    color: "#ffffff",
+    fontSize: "5em",
+    fontFamily: "julietta-messie-ooer"
+  });
+  let [copy, setCopy] = useState({
+    color: "#ffffff",
+    fontSize: "5em",
+    fontFamily: "julietta-messie-ooer"
+  });
   return (
     <div className="App">
-      <header className="typo-header">Typo</header>
+      <header className="typo-header">Typo - {original.color}</header>
       <SplitContext.Provider value={{split: split, update: setSplit}}>
         <div className="typo-splitscreen">
           <Typo copy title="Copy" style={copy} />
@@ -19,8 +27,8 @@ export default function App() {
           <Divider />
         </div>
       </SplitContext.Provider>
-      <Controller style={original} update={setOriginal} />
-      <Controller style={copy} update={setCopy} />
+      <Controller original style={original} update={setOriginal} />
+      <Controller copy style={copy} update={setCopy} />
     </div>
   );
 }

@@ -29,16 +29,7 @@
 .typo-splitscreen {
   position: relative;
   grid-area: typo;
-  border-bottom: 1px solid white;
   overflow: hidden;
-}
-
-.controller:first-of-type {
-  grid-area: left;
-}
-
-.controller:last-of-type {
-  grid-area: right;
 }
 
 .dividerMouseArea {
@@ -74,8 +65,4 @@
   height: 40px;
   border-radius: 10px;
   background-color: white;
-}
-
-.controller {
-  background-color: #444;
 }

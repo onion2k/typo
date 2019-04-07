@@ -15,6 +15,8 @@ export default function Typo(data) {
   
   if (data.style) {
     style.color = data.style.color;
+    style.fontSize = data.style.fontSize;
+    style.fontFamily = data.style.fontFamily;
   }
 
   return (
