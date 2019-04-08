@@ -17,6 +17,14 @@ export default function App() {
     fontSize: "5em",
     fontFamily: "julietta-messie-ooer"
   });
+  const transfer = (name, value) => {
+    const originalStyle = { ...original };
+    originalStyle[name] = value;
+    setOriginal({ ...originalStyle });
+    const copyStyle = { ...copy };
+    copyStyle[name] = value;
+    setCopy({ ...copyStyle });
+  }
   return (
     <div className="App">
       <header className="typo-header">Typo - {original.color}</header>
@@ -27,8 +35,8 @@ export default function App() {
           <Divider />
         </div>
       </SplitContext.Provider>
-      <Controller original style={original} update={setOriginal} />
-      <Controller copy style={copy} update={setCopy} />
+      <Controller style={original} update={setOriginal} transfer={transfer} />
+      <Controller style={copy} update={setCopy} transfer={transfer} />
     </div>
   );
 }
