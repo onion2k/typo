@@ -1,13 +1,8 @@
 import React from "react";
 import "./Controller.css";
 
-const cssTextFeatures = [
-  { name: "fontFamily", label: "Font Family" },
-  { name: "fontSize", label: "Font Size" },
-  { name: "color", label: "Color" },
-  { name: "letterSpacing", label: "Letter Spacing" },
-  { name: "lineHeight", label: "Line Height" }
-];
+const cssdata = require("./ctf.json");
+const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Controller(data) {
   const update = e => {
@@ -17,15 +12,24 @@ export default function Controller(data) {
   };
 
   const settings = cssTextFeatures.map(s => {
+    let input = (<input
+      name={s.name}
+      type="text"
+      onChange={update}
+      value={data.style[s.name] || "inherit"}
+    />);
+    if (s.options) {
+    input = (<select
+      name={s.name}
+      onChange={update}
+    >
+      {s.options.map((o)=>{ return <option key={o} value={o} >{o}</option>; })}
+    </select>);
+    }
     return (
       <React.Fragment key={s.name}>
         <label htmlFor={s.name}>{s.label}</label>
-        <input
-          name={s.name}
-          type="text"
-          onChange={update}
-          value={data.style[s.name] || "inherit"}
-        />
+        {input}
         <button onClick={()=>data.transfer(s.name, data.style[s.name])}>⇌</button>
       </React.Fragment>
     );

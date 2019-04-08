@@ -3,6 +3,9 @@ import SplitContext from "./Split";
 
 import "./Typo.css";
 
+const cssdata = require("./ctf.json");
+const cssTextFeatures = cssdata.cssTextFeatures;
+
 export default function Typo(data) {
   let split = useContext(SplitContext);
 
@@ -16,11 +19,9 @@ export default function Typo(data) {
   }
 
   if (data.style) {
-    style.color = data.style.color;
-    style.fontSize = data.style.fontSize;
-    style.fontFamily = data.style.fontFamily;
-    style.letterSpacing = data.style.letterSpacing;
-    style.lineHeight = data.style.lineHeight;
+    cssTextFeatures.forEach((s)=>{
+        style[s.name] = data.style[s.name];
+    });
   }
 
   return (

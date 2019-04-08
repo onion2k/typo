@@ -1,0 +1,14 @@
+{
+  "cssTextFeatures": [
+    { "name": "fontFamily", "label": "Font-Family" },
+    { "name": "fontSize", "label": "Font-Size" },
+    { "name": "fontWeight", "label": "Font-weight" },
+    { "name": "textRendering", "label": "text-rendering", "options": ["auto","optimizeSpeed","optimizeLegibility","geometricPrecision"] },
+    { "name": "letterSpacing", "label": "Letter-spacing" },
+    { "name": "lineHeight", "label": "Line-Height" },
+    { "name": "color", "label": "Color" },
+    { "name": "maxWidth", "label": "Max-Width" },
+    { "name": "textAlign", "label": "text-align", "options": ["left","right","center"] },
+    { "name": "transform", "label": "transform" }
+  ]
+}
