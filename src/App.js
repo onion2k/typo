@@ -27,7 +27,7 @@ export default function App() {
   }
   return (
     <div className="App">
-      <header className="typo-header">Typo - {original.color}</header>
+      <header className="typo-header">Typo</header>
       <SplitContext.Provider value={{split: split, update: setSplit}}>
         <div className="typo-splitscreen">
           <Typo copy title="Copy" style={copy} />
