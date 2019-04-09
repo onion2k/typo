@@ -7,7 +7,7 @@ import Header from "./Components/Header";
 import "./App.css";
 
 export default function App() {
-  let [split, setSplit] = useState(300);
+  let [split, setSplit] = useState('50%');
   let [content, setContent] = useState('Ooer');
   let [original, setOriginal] = useState({
     color: "#ffffff",
