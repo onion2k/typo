@@ -44,9 +44,6 @@ export default function Controller(data) {
         <button onClick={() => data.transfer(s.name, data.style[s.name])}>
           ⇌
         </button>
-        <button onClick={() => {}} disabled>
-          i
-        </button>
       </React.Fragment>
     );
   });
