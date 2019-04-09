@@ -17,7 +17,8 @@ export default function Controller(data) {
         name={s.name}
         type="text"
         onChange={update}
-        value={data.style[s.name] || "inherit"}
+        placeholder="inherit"
+        value={data.style[s.name]}
       />
     );
     if (s.options) {
@@ -30,12 +31,15 @@ export default function Controller(data) {
               </option>
             );
           })}
+          <option key={"inherit"} value={"inherit"}>{"inherit"}</option>
+          <option key={"initial"} value={"initial"}>{"initial"}</option>
+          <option key={"unset"} value={"unset"}>{"unset"}</option>
         </select>
       );
     }
     return (
       <React.Fragment key={s.name}>
-        <label htmlFor={s.name}>{s.label}</label>
+        <label htmlFor={s.name}><a target="_BLANK" href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${s.label}`}>{s.label}</a></label>
         {input}
         <button onClick={() => data.transfer(s.name, data.style[s.name])}>
           ⇌

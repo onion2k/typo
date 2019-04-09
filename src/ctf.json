@@ -69,12 +69,43 @@
     },
     {
       "name": "textDecoration",
-      "label": "text-decoration",
-      "options": ["none", "underline", "overline", "line-through", "blink"]
+      "label": "text-decoration"
+    },
+    {
+      "name": "textDecorationLine",
+      "label": "text-decoration-line",
+      "options": ["none", "underline", "overline", "line-through"]
+    },
+    {
+      "name": "textDecorationColor",
+      "label": "text-decoration-color"
+    },
+    {
+      "name": "textDecorationStyle",
+      "label": "text-decoration-style",
+      "options": ["solid","double","dotted","dashed","wavy"]
     },
     {
       "name": "textUnderlinePosition",
       "label": "text-underline-position"
+    },
+    {
+      "name": "textEmphasis",
+      "label": "text-emphasis"
+    },
+    {
+      "name": "textEmphasisColor",
+      "label": "text-emphasis-color"
+    },
+    {
+      "name": "textEmphasisPosition",
+      "label": "text-emphasis-position",
+      "options": ["over right","over left","under right","under left"]
+    },
+    {
+      "name": "textEmphasisStyle",
+      "label": "text-emphasis-style",
+      "options": ["none","filled","open","dot","circle","double-circle","triangle","sesame","x","🦄"]
     },
     {
       "name": "textIndent",
