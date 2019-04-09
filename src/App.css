@@ -15,7 +15,7 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 3fr 2fr;
+  grid-template-rows: 80px 300px auto;
   grid-template-areas: "header header" "typo typo" "left right";
   grid-gap: 2px;
 }

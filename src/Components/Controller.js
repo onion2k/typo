@@ -22,7 +22,7 @@ export default function Controller(data) {
     );
     if (s.options) {
       input = (
-        <select name={s.name} onChange={update}>
+        <select name={s.name} onChange={update} value={data.style[s.name]}>
           {s.options.map(o => {
             return (
               <option key={o} value={o}>
@@ -39,6 +39,9 @@ export default function Controller(data) {
         {input}
         <button onClick={() => data.transfer(s.name, data.style[s.name])}>
           ⇌
+        </button>
+        <button onClick={() => {}} disabled>
+          i
         </button>
       </React.Fragment>
     );

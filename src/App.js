@@ -8,6 +8,7 @@ import "./App.css";
 
 export default function App() {
   let [split, setSplit] = useState(300);
+  let [content, setContent] = useState('Ooer');
   let [original, setOriginal] = useState({
     color: "#ffffff",
     fontSize: "5em",
@@ -28,11 +29,11 @@ export default function App() {
   };
   return (
     <div className="App">
-      <Header />
+      <Header setContent={setContent} />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
-          <Typo copy title="Copy" style={copy} />
-          <Typo original title="Original" style={original} />
+          <Typo copy title="Copy" style={copy} content={content} />
+          <Typo original title="Original" style={original} content={content} />
           <Divider />
         </div>
       </SplitContext.Provider>

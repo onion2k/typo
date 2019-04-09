@@ -31,7 +31,7 @@ export default function Typo(data) {
     >
       <span className="title">{data.title}</span>
       <div className="content" style={style}>
-        Ooer
+        { data.content }
       </div>
     </div>
   );
