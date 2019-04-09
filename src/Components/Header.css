@@ -1,0 +1,12 @@
+.typo-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+
+.typo-header > h1 {
+  font-size: 2.75rem;
+}

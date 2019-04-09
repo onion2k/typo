@@ -3,6 +3,7 @@ import SplitContext from "./Split";
 import Typo from "./Components/Typo";
 import Controller from "./Components/Controller";
 import Divider from "./Components/Divider";
+import Header from "./Components/Header";
 import "./App.css";
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
   };
   return (
     <div className="App">
-      <header className="typo-header">Typo</header>
+      <Header />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
           <Typo copy title="Copy" style={copy} />

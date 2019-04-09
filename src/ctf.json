@@ -2,13 +2,100 @@
   "cssTextFeatures": [
     { "name": "fontFamily", "label": "Font-Family" },
     { "name": "fontSize", "label": "Font-Size" },
+    { "name": "fontSizeAdjust", "label": "font-size-adjust" },
+
+    {
+      "name": "fontStretch",
+      "label": "font-stretch",
+      "options": [
+        "normal",
+        "wider",
+        "narrower",
+        "ultra-condensed",
+        "extra-condensed",
+        "condensed",
+        "semi-condensed",
+        "semi-expanded",
+        "expanded",
+        "extra-expanded",
+        "ultra-expanded"
+      ]
+    },
+    {
+      "name": "fontStyle",
+      "label": "font-style",
+      "options": ["normal", "italic", "oblique"]
+    },
+    {
+      "name": "fontVariant",
+      "label": "font-variant",
+      "options": ["normal", "small-caps"]
+    },
+    {
+      "name": "",
+      "label": ""
+    },
     { "name": "fontWeight", "label": "Font-weight" },
-    { "name": "textRendering", "label": "text-rendering", "options": ["auto","optimizeSpeed","optimizeLegibility","geometricPrecision"] },
+    {
+      "name": "textRendering",
+      "label": "text-rendering",
+      "options": [
+        "auto",
+        "optimizeSpeed",
+        "optimizeLegibility",
+        "geometricPrecision"
+      ]
+    },
     { "name": "letterSpacing", "label": "Letter-spacing" },
     { "name": "lineHeight", "label": "Line-Height" },
     { "name": "color", "label": "Color" },
     { "name": "maxWidth", "label": "Max-Width" },
-    { "name": "textAlign", "label": "text-align", "options": ["left","right","center"] },
+    {
+      "name": "textAlign",
+      "label": "text-align",
+      "options": ["left", "right", "center", "justify"]
+    },
+    {
+      "name": "textDecoration",
+      "label": "text-decoration",
+      "options": ["none", "underline", "overline", "line-through", "blink"]
+    },
+    {
+      "name": "textIndent",
+      "label": "text-indent"
+    },
+    {
+      "name": "textShadow",
+      "label": "text-shadow"
+    },
+    {
+      "name": "textTransform",
+      "label": "text-transform",
+      "options": [
+        "none",
+        "capitalize",
+        "uppercase",
+        "lowercase",
+        "unicode-bidi",
+        "normal",
+        "embed",
+        "bidi-override"
+      ]
+    },
+    {
+      "name": "whiteSpace",
+      "label": "white-space",
+      "options": ["normal", "pre", "nowrap"]
+    },
+    {
+      "name": "wordSpacing",
+      "label": "word-spacing"
+    },
+    {
+      "name": "direction",
+      "label": "direction",
+      "options": ["ltr", "rtl"]
+    },
     { "name": "transform", "label": "transform" }
   ]
 }
