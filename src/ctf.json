@@ -2,8 +2,54 @@
   "cssTextFeatures": [
     { "name": "fontFamily", "label": "Font-Family" },
     { "name": "fontSize", "label": "Font-Size" },
-    { "name": "fontSizeAdjust", "label": "font-size-adjust" },
-
+    {
+      "name": "fontStyle",
+      "label": "font-style",
+      "options": ["normal", "italic", "oblique"]
+    },
+    {
+      "name": "fontVariant",
+      "label": "font-variant",
+      "options": ["normal", "small-caps"]
+    },
+    {
+      "name": "fontKerning",
+      "label": "font-kerning",
+      "options": ["normal", "none"]
+    },
+    { "name": "fontWeight", "label": "Font-weight" },
+    {
+      "name": "fontFeatureSettings",
+      "label": "font-feature-settings"
+    },
+    {
+      "name": "fontVariantAlternates",
+      "label": "font-variant-alternates"
+    },
+    {
+      "name": "fontVariantCaps",
+      "label": "font-variant-caps"
+    },
+    {
+      "name": "fontVariantEastAsian",
+      "label": "font-variant-east-asian"
+    },
+    {
+      "name": "fontVariantLigatures",
+      "label": "font-variant-ligatures"
+    },
+    {
+      "name": "fontVariantNumeric",
+      "label": "font-variant-numeric"
+    },
+    {
+      "name": "fontVariantPosition",
+      "label": "font-variant-position"
+    },
+    {
+      "name": "fontSizeAdjust",
+      "label": "font-size-adjust"
+    },
     {
       "name": "fontStretch",
       "label": "font-stretch",
@@ -22,47 +68,30 @@
       ]
     },
     {
-      "name": "fontStyle",
-      "label": "font-style",
-      "options": ["normal", "italic", "oblique"]
+      "name": "textDecoration",
+      "label": "text-decoration",
+      "options": ["none", "underline", "overline", "line-through", "blink"]
     },
     {
-      "name": "fontVariant",
-      "label": "font-variant",
-      "options": ["normal", "small-caps"]
+      "name": "textUnderlinePosition",
+      "label": "text-underline-position"
     },
     {
-      "name": "",
-      "label": ""
+      "name": "textIndent",
+      "label": "text-indent"
     },
-    { "name": "fontWeight", "label": "Font-weight" },
     {
-      "name": "textRendering",
-      "label": "text-rendering",
-      "options": [
-        "auto",
-        "optimizeSpeed",
-        "optimizeLegibility",
-        "geometricPrecision"
-      ]
+      "name": "textOverflow",
+      "label": "text-overflow"
     },
-    { "name": "letterSpacing", "label": "Letter-spacing" },
-    { "name": "lineHeight", "label": "Line-Height" },
-    { "name": "color", "label": "Color" },
-    { "name": "maxWidth", "label": "Max-Width" },
     {
       "name": "textAlign",
       "label": "text-align",
       "options": ["left", "right", "center", "justify"]
     },
     {
-      "name": "textDecoration",
-      "label": "text-decoration",
-      "options": ["none", "underline", "overline", "line-through", "blink"]
-    },
-    {
-      "name": "textIndent",
-      "label": "text-indent"
+      "name": "textAlignLast",
+      "label": "text-align-last"
     },
     {
       "name": "textShadow",
@@ -83,6 +112,45 @@
       ]
     },
     {
+      "name": "textOrientation",
+      "label": "text-orientation"
+    },
+    {
+      "name": "textRendering",
+      "label": "text-rendering",
+      "options": [
+        "auto",
+        "optimizeSpeed",
+        "optimizeLegibility",
+        "geometricPrecision"
+      ]
+    },
+    {
+      "name": "wordBreak",
+      "label": "word-break"
+    },
+    {
+      "name": "hyphens",
+      "label": "hyphens"
+    },
+    {
+      "name": "lineBreak",
+      "label": "line-break"
+    },
+    {
+      "name": "wordWrap",
+      "label": "word-wrap"
+    },
+    {
+      "name": "direction",
+      "label": "direction",
+      "options": ["ltr", "rtl"]
+    },
+    {
+      "name": "writingMode",
+      "label": "writing-mode"
+    },
+    {
       "name": "whiteSpace",
       "label": "white-space",
       "options": ["normal", "pre", "nowrap"]
@@ -91,11 +159,10 @@
       "name": "wordSpacing",
       "label": "word-spacing"
     },
-    {
-      "name": "direction",
-      "label": "direction",
-      "options": ["ltr", "rtl"]
-    },
+    { "name": "letterSpacing", "label": "Letter-spacing" },
+    { "name": "lineHeight", "label": "Line-Height" },
+    { "name": "color", "label": "Color" },
+    { "name": "maxWidth", "label": "Max-Width" },
     { "name": "transform", "label": "transform" }
   ]
 }

@@ -5,7 +5,7 @@
   font-family: Courier, monospace;
   text-transform: lowercase;
   display: grid;
-  grid-template-columns: 120px 1fr 34px;
+  grid-template-columns: 170px 1fr 34px;
   grid-auto-rows: minmax(20px, 26px);
   grid-gap: 0;
   align-items: center;
