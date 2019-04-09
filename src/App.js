@@ -6,19 +6,17 @@ import Divider from "./Components/Divider";
 import Header from "./Components/Header";
 import "./App.css";
 
+const defaultState = {
+    color: "#ffffff",
+    fontSize: "5em",
+    fontFamily: "julietta-messie-ooer"
+}
+
 export default function App() {
   let [split, setSplit] = useState('50%');
   let [content, setContent] = useState('Ooer');
-  let [original, setOriginal] = useState({
-    color: "#ffffff",
-    fontSize: "5em",
-    fontFamily: "julietta-messie-ooer"
-  });
-  let [copy, setCopy] = useState({
-    color: "#ffffff",
-    fontSize: "5em",
-    fontFamily: "julietta-messie-ooer"
-  });
+  let [original, setOriginal] = useState(defaultState);
+  let [copy, setCopy] = useState(defaultState);
   const transfer = (name, value) => {
     const originalStyle = { ...original };
     originalStyle[name] = value;
