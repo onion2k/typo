@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import SplitContext from "./Split";
+import SplitContext from "../Split";
 
 import "./Typo.css";
 
-const cssdata = require("./ctf.json");
+const cssdata = require("../ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Typo(data) {
@@ -19,8 +19,8 @@ export default function Typo(data) {
   }
 
   if (data.style) {
-    cssTextFeatures.forEach((s)=>{
-        style[s.name] = data.style[s.name];
+    cssTextFeatures.forEach(s => {
+      style[s.name] = data.style[s.name];
     });
   }
 
