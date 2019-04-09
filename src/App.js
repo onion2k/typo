@@ -13,7 +13,7 @@ const defaultState = {
 }
 
 export default function App() {
-  let [split, setSplit] = useState('50%');
+  let [split, setSplit] = useState(null);
   let [content, setContent] = useState('Ooer');
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);

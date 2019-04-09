@@ -13,9 +13,7 @@ export default function Typo(data) {
   let style = {};
 
   if (data.copy) {
-    clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
-      split.split
-    }px 100vh)`;
+    clipPath = `polygon(${split.split ? split.split + "px" : "50%"} 0, 100vw 0, 100vw 100vh, ${split.split ? split.split + "px" : "50%"} 100vh)`;
   }
 
   if (data.style) {
