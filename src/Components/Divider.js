@@ -17,7 +17,7 @@ export default function Divider() {
       onMouseMove={moveDivider}
       onMouseUp={e => setDragging(false)}
     >
-      <div className="divider" style={{ left: split.split ? split.split - 10 + "px" : "50%" }}>
+      <div className="divider" style={{ left: split.split - 10 + "px" }}>
         <span className="handle" onMouseDown={e => setDragging(true)} />
       </div>
     </div>

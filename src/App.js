@@ -8,13 +8,15 @@ import "./App.css";
 
 const defaultState = {
     color: "#ffffff",
-    fontSize: "5em",
-    fontFamily: "julietta-messie-ooer"
+    fontSize: "1em",
+    maxWidth: "960px"
 }
 
+const defaultContent = 'Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.';
+
 export default function App() {
-  let [split, setSplit] = useState(null);
-  let [content, setContent] = useState('Ooer');
+  let [split, setSplit] = useState(500);
+  let [content, setContent] = useState(defaultContent);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
   const transfer = (name, value) => {
