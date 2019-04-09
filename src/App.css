@@ -8,14 +8,13 @@
 
 .App {
   position: relative;
-  height: 100vh;
   width: 100vw;
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 3fr 2fr;
+  grid-template-rows: 80px 400px auto;
   grid-template-areas: "header header" "typo typo" "left right";
   grid-gap: 2px;
 }
