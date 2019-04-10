@@ -6,7 +6,7 @@
   text-transform: lowercase;
   display: grid;
   grid-template-columns: 210px 1fr 34px;
-  grid-auto-rows: minmax(20px, 26px);
+  grid-auto-rows: 26px;
   grid-gap: 0;
   align-items: center;
   overflow: scroll;
@@ -29,7 +29,7 @@
   font-family: Courier, monospace;
 }
 
-.controller > input[value='inherit'] {
+.controller > input[value="inherit"] {
   color: #888888;
 }
 

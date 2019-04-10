@@ -13,7 +13,9 @@ export default function Typo(data) {
   let style = {};
 
   if (data.copy) {
-    clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${split.split}px 100vh)`;
+    clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
+      split.split
+    }px 100vh)`;
   }
 
   if (data.style) {
@@ -29,7 +31,7 @@ export default function Typo(data) {
     >
       <span className="title">{data.title}</span>
       <div className="content" style={style}>
-        { data.content }
+        {data.content}
       </div>
     </div>
   );

@@ -9,6 +9,7 @@
 
 .typo.copy {
   z-index: 2;
+  background-color: #3a3e44;
 }
 
 .typo > span.title {
@@ -22,7 +23,7 @@
 
 .typo.copy > span.title {
   width: 15px;
-  sbottom: 10px;
+  bottom: 10px;
   right: 5px;
   writing-mode: tb-rl;
   transform: rotate(-180deg);
