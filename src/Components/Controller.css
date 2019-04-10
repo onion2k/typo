@@ -1,18 +1,20 @@
 .controller {
   background-color: #f0f0f0;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 11px;
   font-family: Courier, monospace;
   text-transform: lowercase;
   display: grid;
-  grid-template-columns: 170px 1fr 34px;
+  grid-template-columns: 210px 1fr 34px;
   grid-auto-rows: minmax(20px, 26px);
   grid-gap: 0;
   align-items: center;
+  overflow: scroll;
 }
 
-.controller > label {
+.controller > label > a {
   color: red;
+  text-decoration: none;
 }
 
 .controller > label:after {
@@ -27,6 +29,10 @@
   font-family: Courier, monospace;
 }
 
+.controller > input[value='inherit'] {
+  color: #888888;
+}
+
 .controller > button {
   margin-left: 5px;
   color: black;
@@ -34,7 +40,7 @@
   border: 1px solid #444;
   font-size: 11px;
   font-family: Courier, monospace;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .controller > select {

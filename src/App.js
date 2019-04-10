@@ -6,18 +6,19 @@ import Divider from "./Components/Divider";
 import Header from "./Components/Header";
 import "./App.css";
 
+const defaultState = {
+    color: "#ffffff",
+    fontSize: "1em",
+    maxWidth: "960px"
+}
+
+const defaultContent = 'Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.';
+
 export default function App() {
-  let [split, setSplit] = useState(300);
-  let [original, setOriginal] = useState({
-    color: "#ffffff",
-    fontSize: "5em",
-    fontFamily: "julietta-messie-ooer"
-  });
-  let [copy, setCopy] = useState({
-    color: "#ffffff",
-    fontSize: "5em",
-    fontFamily: "julietta-messie-ooer"
-  });
+  let [split, setSplit] = useState(500);
+  let [content, setContent] = useState(defaultContent);
+  let [original, setOriginal] = useState(defaultState);
+  let [copy, setCopy] = useState(defaultState);
   const transfer = (name, value) => {
     const originalStyle = { ...original };
     originalStyle[name] = value;
@@ -28,11 +29,11 @@ export default function App() {
   };
   return (
     <div className="App">
-      <Header />
+      <Header setContent={setContent} />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
-          <Typo copy title="Copy" style={copy} />
-          <Typo original title="Original" style={original} />
+          <Typo copy title="Copy" style={copy} content={content} />
+          <Typo original title="Original" style={original} content={content} />
           <Divider />
         </div>
       </SplitContext.Provider>
