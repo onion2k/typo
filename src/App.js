@@ -8,7 +8,7 @@ import "./App.css";
 
 const defaultState = {
   color: "#ffffff",
-  fontSize: "6em",
+  fontSize: "2em",
   maxWidth: "960px"
 };
 
