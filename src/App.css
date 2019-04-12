@@ -19,6 +19,21 @@
   grid-gap: 2px;
 }
 
+.App.drag:after {
+  content: "Drop font to load";
+  font-size: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+}
+
 .typo-header {
   grid-area: header;
 }
