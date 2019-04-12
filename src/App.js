@@ -51,7 +51,6 @@ export default function App() {
 
   return (
     <div className={`App ${isDragActive ? "drag" : ""}`} {...getRootProps()}>
-      <input {...getInputProps()} />
       <Header setContent={setContent} />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
