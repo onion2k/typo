@@ -36,7 +36,6 @@ export default function App() {
       );
       fontFace.load();
       document.fonts.add(fontFace);
-
       const originalStyle = { ...original };
       originalStyle["fontFamily"] = "custom";
       setOriginal({ ...originalStyle });
