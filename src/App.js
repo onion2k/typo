@@ -30,13 +30,25 @@ export default function App() {
     reader.onload = file => {
       // Do whatever you want with the file contents
       const binaryStr = reader.result;
-      console.log(file, binaryStr);
+      const fontFace = new FontFace(
+        "custom",
+        "url(data:charset=utf-8;base64," + btoa(binaryStr) + ")"
+      );
+      fontFace.load();
+      document.fonts.add(fontFace);
+
+      const originalStyle = { ...original };
+      originalStyle["fontFamily"] = "custom";
+      setOriginal({ ...originalStyle });
+      const copyStyle = { ...copy };
+      copyStyle["fontFamily"] = "custom";
+      setCopy({ ...copyStyle });
     };
 
     acceptedFiles.forEach(file => reader.readAsBinaryString(file));
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, isDragActive } = useDropzone({
     onDrop
   });
 

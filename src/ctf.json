@@ -1,9 +1,20 @@
 {
   "cssTextFeatures": [
-    { 
-      "name": "fontFamily", 
+    {
+      "name": "fontFamily",
       "label": "Font-Family",
-      "options": ["serif","sans-serif","monospace","cursive","fantasy","system-ui","Times, Times New Roman, Georgia, serif","Verdana, Arial, Helvetica, sans-serif","Lucida Console, Courier, monospace","julietta-messie-ooer"]
+      "options": [
+        "serif",
+        "sans-serif",
+        "monospace",
+        "cursive",
+        "fantasy",
+        "system-ui",
+        "Times, Times New Roman, Georgia, serif",
+        "Verdana, Arial, Helvetica, sans-serif",
+        "Lucida Console, Courier, monospace",
+        "custom"
+      ]
     },
     { "name": "fontSize", "label": "Font-Size" },
     {
@@ -87,13 +98,12 @@
     {
       "name": "textDecorationStyle",
       "label": "text-decoration-style",
-      "options": ["solid","double","dotted","dashed","wavy"]
+      "options": ["solid", "double", "dotted", "dashed", "wavy"]
     },
     {
       "name": "textDecorationSkipInk",
       "label": "text-decoration-skip-ink",
       "options": ["none", "auto"]
-
     },
     {
       "name": "textUnderlinePosition",
@@ -110,12 +120,23 @@
     {
       "name": "textEmphasisPosition",
       "label": "text-emphasis-position",
-      "options": ["over right","over left","under right","under left"]
+      "options": ["over right", "over left", "under right", "under left"]
     },
     {
       "name": "textEmphasisStyle",
       "label": "text-emphasis-style",
-      "options": ["none","filled","open","dot","circle","double-circle","triangle","sesame","x","🦄"]
+      "options": [
+        "none",
+        "filled",
+        "open",
+        "dot",
+        "circle",
+        "double-circle",
+        "triangle",
+        "sesame",
+        "x",
+        "🦄"
+      ]
     },
     {
       "name": "textIndent",
