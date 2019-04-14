@@ -16,6 +16,18 @@ const defaultState = {
 const defaultContent =
   "Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.";
 
+function addFont(file){
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onabort = () => console.log("file reading was aborted");
+    fr.onerror = () => console.log("file reading has failed");
+    fr.onload = () => {
+      resolve(fr.result)
+    };
+    fr.readAsArrayBuffer(file);
+  });
+}
+
 export default function App() {
   let [split, setSplit] = useState(500);
   let [content, setContent] = useState(defaultContent);
@@ -23,28 +35,25 @@ export default function App() {
   let [copy, setCopy] = useState(defaultState);
 
   const onDrop = useCallback(acceptedFiles => {
-    const reader = new FileReader();
+    acceptedFiles.forEach((file) => {
+      const fontLoader = addFont(file);
+      fontLoader.then((font)=>{
+        const fontFace = new FontFace(
+          "custom",
+          font
+        );
+        fontFace.load();
+        document.fonts.add(fontFace);
 
-    reader.onabort = () => console.log("file reading was aborted");
-    reader.onerror = () => console.log("file reading has failed");
-    reader.onload = file => {
-      // Do whatever you want with the file contents
-      const binaryStr = reader.result;
-      const fontFace = new FontFace(
-        "custom",
-        "url(data:charset=utf-8;base64," + btoa(binaryStr) + ")"
-      );
-      fontFace.load();
-      document.fonts.add(fontFace);
-      const originalStyle = { ...original };
-      originalStyle["fontFamily"] = "custom";
-      setOriginal({ ...originalStyle });
-      const copyStyle = { ...copy };
-      copyStyle["fontFamily"] = "custom";
-      setCopy({ ...copyStyle });
-    };
+        const originalStyle = { ...original };
+        originalStyle["fontFamily"] = "custom";
+        setOriginal({ ...originalStyle });
 
-    acceptedFiles.forEach(file => reader.readAsBinaryString(file));
+        const copyStyle = { ...copy };
+        copyStyle["fontFamily"] = "custom";
+        setCopy({ ...copyStyle });
+      });
+    });
   }, []);
 
   const { getRootProps, isDragActive } = useDropzone({
