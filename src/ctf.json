@@ -17,7 +17,8 @@
       ],
       "simple": true
     },
-    { "name": "fontSize", "label": "Font-Size" },
+    { "name": "fontSize", "label": "Font-Size",
+      "simple": true },
     {
       "name": "fontStyle",
       "label": "font-style",
@@ -181,6 +182,7 @@
     {
       "name": "textOrientation",
       "label": "text-orientation",
+      "options": ["mixed","upright","sideways-right","sideways","use-glyph-orientation"],
       "simple": true
     },
     {
@@ -196,15 +198,18 @@
     },
     {
       "name": "wordBreak",
-      "label": "word-break"
+      "label": "word-break",
+      "options": ["normal","break-all","keep-all","break-word"]
     },
     {
       "name": "hyphens",
-      "label": "hyphens"
+      "label": "hyphens",
+      "options": ["none","manual","auto"]
     },
     {
       "name": "lineBreak",
-      "label": "line-break"
+      "label": "line-break",
+      "option": ["auto","loose","normal","strict"]
     },
     {
       "name": "wordWrap",
@@ -217,12 +222,13 @@
     },
     {
       "name": "writingMode",
-      "label": "writing-mode"
+      "label": "writing-mode",
+      "options": ["horizontal-tb","vertical-rl","vertical-lr","sideways-rl","sideways-lr"]
     },
     {
       "name": "whiteSpace",
       "label": "white-space",
-      "options": ["normal", "pre", "nowrap"],
+      "options": ["normal", "pre", "nowrap", "pre-wrap", "pre-line", "break-spaces"],
       "simple": true
     },
     {
@@ -238,6 +244,12 @@
     { "name": "maxWidth", "label": "Max-Width",
       "simple": true },
     { "name": "transform", "label": "transform",
-      "simple": true }
+      "simple": true },
+    { "name": "webkitTextStrokeWidth",
+      "label": "-webkit-text-stroke-width" },
+    { "name": "webkitTextFillColor",
+      "label": "-webkit-text-fill-color" },
+    { "name": "webkitTextStrokeColor",
+      "label": "-webkit-text-stroke-color" }
   ]
 }
