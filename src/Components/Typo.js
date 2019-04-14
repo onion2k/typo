@@ -7,10 +7,13 @@ const cssdata = require("../ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Typo(data) {
+  
+  const { content, style, title, copy} = data;
+  
   let split = useContext(SplitContext);
 
   let clipPath = "";
-  let style = {};
+  let tempStyle = {};
 
   if (data.copy) {
     clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
@@ -18,20 +21,20 @@ export default function Typo(data) {
     }px 100vh)`;
   }
 
-  if (data.style) {
+  if (style) {
     cssTextFeatures.forEach(s => {
-      style[s.name] = data.style[s.name];
+      tempStyle[s.name] = style[s.name];
     });
   }
 
   return (
     <div
-      className={`typo ${data.copy ? "copy" : "original"}`}
+      className={`typo ${copy ? "copy" : "original"}`}
       style={{ clipPath }}
     >
-      <span className="title">{data.title}</span>
+      <span className="title">{title}</span>
       <div className="content" style={style}>
-        {data.content}
+        {content}
       </div>
     </div>
   );

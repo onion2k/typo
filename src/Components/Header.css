@@ -18,6 +18,11 @@
   font-weight: 300;
 }
 
-.typo-header > .options > button {
-  margin-left: 10px;
+.typo-header .options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 32px;
+  padding:0;
+  margin:0;
 }
