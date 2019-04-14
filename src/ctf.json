@@ -245,11 +245,11 @@
       "simple": true },
     { "name": "transform", "label": "transform",
       "simple": true },
-    { "name": "webkitTextStrokeWidth",
+    { "name": "WebkitTextStrokeWidth",
       "label": "-webkit-text-stroke-width" },
-    { "name": "webkitTextFillColor",
+    { "name": "WebkitTextFillColor",
       "label": "-webkit-text-fill-color" },
-    { "name": "webkitTextStrokeColor",
+    { "name": "WebkitTextStrokeColor",
       "label": "-webkit-text-stroke-color" }
   ]
 }

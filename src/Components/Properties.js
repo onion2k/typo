@@ -6,28 +6,28 @@ const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Properties(data) {
   
-  const { view } = data;
-
-  const update = e => {
-    const style = { ...data.style };
-    style[e.target.name] = e.target.value;
-    data.update({ ...style });
+  const { view, style, update, transfer } = data;
+  
+  const change = e => {
+    const newstyle = { ...style };
+    newstyle[e.target.name] = e.target.value;
+    update({ ...newstyle });
   };
-
+  
   const properties = cssTextFeatures.map(s => {
     if (view==='simplified' && s.simple!==true) { return null; }
     let input = (
       <input
         name={s.name}
         type="text"
-        onChange={update}
+        onChange={change}
         placeholder="inherit"
-        value={data.style[s.name]}
+        value={style[s.name]}
       />
     );
     if (s.options) {
       input = (
-        <select name={s.name} onChange={update} value={data.style[s.name]}>
+        <select name={s.name} onChange={change} value={style[s.name]}>
           {s.options.map(o => {
             return (
               <option key={o} value={o}>
@@ -59,7 +59,7 @@ export default function Properties(data) {
           </a>
         </label>
         {input}
-        <button onClick={() => data.transfer(s.name, data.style[s.name])}>
+        <button onClick={() => transfer(s.name, style[s.name])}>
           ⇌
         </button>
       </React.Fragment>
