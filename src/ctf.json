@@ -14,13 +14,15 @@
         "Verdana, Arial, Helvetica, sans-serif",
         "Lucida Console, Courier, monospace",
         "custom"
-      ]
+      ],
+      "simple": true
     },
     { "name": "fontSize", "label": "Font-Size" },
     {
       "name": "fontStyle",
       "label": "font-style",
-      "options": ["normal", "italic", "oblique"]
+      "options": ["normal", "italic", "oblique"],
+      "simple": true
     },
     {
       "name": "fontVariant",
@@ -84,7 +86,8 @@
     },
     {
       "name": "textDecoration",
-      "label": "text-decoration"
+      "label": "text-decoration",
+      "simple": true
     },
     {
       "name": "textDecorationLine",
@@ -149,7 +152,8 @@
     {
       "name": "textAlign",
       "label": "text-align",
-      "options": ["left", "right", "center", "justify"]
+      "options": ["left", "right", "center", "justify"],
+      "simple": true
     },
     {
       "name": "textAlignLast",
@@ -171,11 +175,13 @@
         "normal",
         "embed",
         "bidi-override"
-      ]
+      ],
+      "simple": true
     },
     {
       "name": "textOrientation",
-      "label": "text-orientation"
+      "label": "text-orientation",
+      "simple": true
     },
     {
       "name": "textRendering",
@@ -185,7 +191,8 @@
         "optimizeSpeed",
         "optimizeLegibility",
         "geometricPrecision"
-      ]
+      ],
+      "simple": true
     },
     {
       "name": "wordBreak",
@@ -215,16 +222,22 @@
     {
       "name": "whiteSpace",
       "label": "white-space",
-      "options": ["normal", "pre", "nowrap"]
+      "options": ["normal", "pre", "nowrap"],
+      "simple": true
     },
     {
       "name": "wordSpacing",
       "label": "word-spacing"
     },
-    { "name": "letterSpacing", "label": "Letter-spacing" },
-    { "name": "lineHeight", "label": "Line-Height" },
-    { "name": "color", "label": "Color" },
-    { "name": "maxWidth", "label": "Max-Width" },
-    { "name": "transform", "label": "transform" }
+    { "name": "letterSpacing", "label": "Letter-spacing",
+      "simple": true },
+    { "name": "lineHeight", "label": "Line-Height",
+      "simple": true },
+    { "name": "color", "label": "Color",
+      "simple": true },
+    { "name": "maxWidth", "label": "Max-Width",
+      "simple": true },
+    { "name": "transform", "label": "transform",
+      "simple": true }
   ]
 }

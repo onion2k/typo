@@ -1,0 +1,53 @@
+.properties {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-size: 11px;
+  font-family: Courier, monospace;
+  text-transform: lowercase;
+  display: grid;
+  grid-template-columns: 200px 270px 34px;
+  grid-auto-rows: 26px;
+  grid-gap: 0;
+  align-items: center;
+}
+
+.properties > label > a {
+  color: red;
+  text-decoration: none;
+}
+
+.properties > label:after {
+  content: ":";
+}
+
+.properties > input {
+  color: black;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 11px;
+  font-family: Courier, monospace;
+}
+
+.properties > input[value="inherit"] {
+  color: #888888;
+}
+
+.properties > button {
+  margin-left: 5px;
+  color: black;
+  background-color: #ddd;
+  border: 1px solid #444;
+  font-size: 11px;
+  font-family: Courier, monospace;
+  border-radius: 12px;
+}
+
+.properties > select {
+  color: black;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  font-family: Courier, monospace;
+  border-radius: 2px;
+}
