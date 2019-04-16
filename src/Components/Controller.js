@@ -3,10 +3,6 @@ import Properties from "./Properties";
 import CSS from "./CSS";
 import "./Controller.css";
 
-function Radio(props) {
-  return <input type="radio" {...props} />;
-}
-
 export default function Controller(data) {
   const { id } = data;
 

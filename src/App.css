@@ -20,8 +20,7 @@
   z-index: 7;
 }
 
-.App.drag:after {
-  content: "Drop font to load";
+.dropzone {
   font-size: 4em;
   display: flex;
   align-items: center;
