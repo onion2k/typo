@@ -68,7 +68,8 @@ export default function App() {
   };
 
   return (
-    <div className={`App ${isDragActive ? "drag" : ""}`} {...getRootProps()}>
+    <div className={`App ${isDragActive ? "drag" : ""}`}>
+      {/* <div className="dropzone" {...getRootProps()} /> */}
       <Header setContent={setContent} />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
@@ -87,8 +88,18 @@ export default function App() {
           <Divider />
         </div>
       </SplitContext.Provider>
-      <Controller style={original} update={setOriginal} transfer={transfer} />
-      <Controller style={copy} update={setCopy} transfer={transfer} />
+      <Controller
+        id={"original"}
+        style={original}
+        update={setOriginal}
+        transfer={transfer}
+      />
+      <Controller
+        id={"copy"}
+        style={copy}
+        update={setCopy}
+        transfer={transfer}
+      />
     </div>
   );
 }

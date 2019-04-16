@@ -10,7 +10,15 @@
   padding: 10px 10px 0;
 }
 
-.controller-options button {
+.controller-options input[type="radio"] {
+  display: none;
+}
+
+.controller-options input[type="radio"]:checked + span {
+  font-weight: bold;
+}
+
+.controller-options label {
   background-color: white;
   border: 1px solid black;
   color: black;
@@ -20,6 +28,6 @@
   cursor: pointer;
 }
 
-.controller-options > div:last-child > button {
+.controller-options > div:last-child > label {
   margin-left: 5px;
 }
