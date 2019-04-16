@@ -16,13 +16,13 @@ const defaultState = {
 const defaultContent =
   "Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.";
 
-function addFont(file){
+function addFont(file) {
   return new Promise((resolve, reject) => {
     const fr = new FileReader();
     fr.onabort = () => console.log("file reading was aborted");
     fr.onerror = () => console.log("file reading has failed");
     fr.onload = () => {
-      resolve(fr.result)
+      resolve(fr.result);
     };
     fr.readAsArrayBuffer(file);
   });
@@ -35,13 +35,11 @@ export default function App() {
   let [copy, setCopy] = useState(defaultState);
 
   const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.forEach((file) => {
+    acceptedFiles.forEach(file => {
       const fontLoader = addFont(file);
-      fontLoader.then((font)=>{
-        const fontFace = new FontFace(
-          "custom",
-          font
-        );
+
+      fontLoader.then(font => {
+        const fontFace = new FontFace("custom", font);
         fontFace.load();
         document.fonts.add(fontFace);
 

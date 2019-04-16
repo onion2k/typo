@@ -5,11 +5,11 @@
   font-family: Courier, monospace;
   text-transform: lowercase;
   display: grid;
-  grid-template-columns: 200px 270px 34px;
+  grid-template-columns: 200px minmax(80px, 1fr) 34px;
   grid-auto-rows: 26px;
   grid-gap: 0;
   align-items: center;
-  z-index:99;
+  z-index: 99;
 }
 
 .properties > label > a {
