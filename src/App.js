@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import SplitContext from "./Split";
+import CssPropertiesContext from "./CssProperties";
 import Typo from "./Components/Typo";
 import Controller from "./Components/Controller";
 import Divider from "./Components/Divider";
 import Header from "./Components/Header";
 import "./App.css";
+
+const cssdata = require("./ctf.json");
+const cssTextFeatures = cssdata.cssTextFeatures;
 
 const defaultState = {
   color: "#ffffff",
@@ -29,10 +33,23 @@ export default function App() {
     copyStyle[name] = value;
     setCopy({ ...copyStyle });
   };
+  
+  const updateFont = (fontName) => {
+    
+    cssTextFeatures[0].options.push(fontName);
+
+    const originalStyle = { ...original };
+    originalStyle["fontFamily"] = fontName;
+    setOriginal({ ...originalStyle });
+
+    const copyStyle = { ...copy };
+    copyStyle["fontFamily"] = fontName;
+    setCopy({ ...copyStyle });
+  }
 
   return (
     <div className={"App"}>
-      <Header setContent={setContent} />
+      <Header setContent={setContent} updateFont={updateFont}/>
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
           <Typo
@@ -50,6 +67,7 @@ export default function App() {
           <Divider />
         </div>
       </SplitContext.Provider>
+      <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
       <Controller
         id={"original"}
         style={original}
@@ -62,6 +80,7 @@ export default function App() {
         update={setCopy}
         transfer={transfer}
       />
+      </CssPropertiesContext.Provider>
     </div>
   );
 }
