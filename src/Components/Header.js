@@ -20,6 +20,7 @@ function addFont(file) {
 
 export default function Header({ setContent, updateFont }) {
   const [loadfont, setLoadfont] = useState(false);
+  const [settings, setSettings] = useState(false);
 
   const onDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(file => {
@@ -46,7 +47,7 @@ export default function Header({ setContent, updateFont }) {
     <header className="typo-header">
       {loadfont && (
         <div
-          className={`dropzone ${isDragActive ? "drag" : ""}`}
+          className={`dialog dropzone ${isDragActive ? "drag" : ""}`}
           {...getRootProps()}
           onClick={() => {
             setLoadfont(false);
@@ -54,6 +55,32 @@ export default function Header({ setContent, updateFont }) {
         >
           Drop a font on the page to load
           <span>or click anywhere to cancel</span>
+        </div>
+      )}
+      {settings && (
+        <div
+          className={`dialog settings`}
+          onClick={() => {
+            setSettings(false);
+          }}
+        >
+          <div onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+          }}>
+            <label>Content
+            <textarea></textarea>
+            </label>
+            <label>Background
+            <input type="text" value="#000"/>
+            </label>
+            <label>Text color
+            <input type="text" value="#fff"/>
+            </label>
+            <label>
+              <button>Update Settings</button>
+            </label>
+          </div>
         </div>
       )}
       <h1>
@@ -69,7 +96,10 @@ export default function Header({ setContent, updateFont }) {
         >
           Load Fonts
         </button>
-        <button className="settings">Settings</button>
+        <button className="settings" 
+          onClick={() => {
+            setSettings(true);
+          }}>Settings</button>
       </div>
     </header>
   );
