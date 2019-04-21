@@ -4,6 +4,9 @@
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .typo.copy {
@@ -25,12 +28,4 @@
   right: 5px;
   writing-mode: tb-rl;
   transform: rotate(-180deg);
-}
-
-.typo > div.content {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
 }
