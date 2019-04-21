@@ -8,15 +8,15 @@ const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Typo(data) {
   
-  const { content, style, title, copy} = data;
+  const { background, foreground, content, style, title, copy} = data;
   
   let split = useContext(SplitContext);
 
-  let clipPath = "";
+  let typoStyle = {};
   let tempStyle = {};
 
   if (data.copy) {
-    clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
+    typoStyle.clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
       split.split
     }px 100vh)`;
   }
@@ -26,14 +26,17 @@ export default function Typo(data) {
       tempStyle[s.name] = style[s.name];
     });
   }
+  
+  typoStyle.color = foreground;
+  typoStyle.backgroundColor = background;
 
   return (
     <div
       className={`typo ${copy ? "copy" : "original"}`}
-      style={{ clipPath }}
+      style={{ ...typoStyle }}
     >
       <span className="title">{title}</span>
-      <div className="content" style={style}>
+      <div className="content" style={tempStyle}>
         {content}
       </div>
     </div>

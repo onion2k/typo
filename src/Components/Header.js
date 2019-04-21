@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import path from 'path';
 import { useDropzone } from "react-dropzone";
 import "./Header.css";
@@ -18,7 +18,7 @@ function addFont(file) {
   });
 }
 
-export default function Header({ setContent, updateFont }) {
+export default function Header({ content, foreground, background, updateFont, updateSettings }) {
   const [loadfont, setLoadfont] = useState(false);
   const [settings, setSettings] = useState(false);
 
@@ -42,6 +42,10 @@ export default function Header({ setContent, updateFont }) {
   const { getRootProps, isDragActive } = useDropzone({
     onDrop
   });
+  
+  const contentRef = useRef(null);
+  const foregroundRef = useRef(null);
+  const backgroundRef = useRef(null);
 
   return (
     <header className="typo-header">
@@ -68,17 +72,28 @@ export default function Header({ setContent, updateFont }) {
             e.stopPropagation();
             e.preventDefault();
           }}>
-            <label>Content
-            <textarea></textarea>
-            </label>
-            <label>Background
-            <input type="text" value="#000"/>
-            </label>
-            <label>Text color
-            <input type="text" value="#fff"/>
+            <h2>Settings</h2>
+            <label>
+              <span>Content</span>
+              <textarea ref={contentRef} defaultValue={content} />
             </label>
             <label>
-              <button>Update Settings</button>
+              <span>Text Color</span>
+              <input type="text" defaultValue={foreground} ref={foregroundRef} />
+            </label>
+            <label>
+              <span>Background</span>
+              <input type="text" defaultValue={background} ref={backgroundRef} />
+            </label>
+            <label>
+              <button onClick={(e)=>{
+                updateSettings({
+                  content: contentRef.current.value,
+                  foreground: foregroundRef.current.value,
+                  background: backgroundRef.current.value
+                });
+                setSettings(false);
+              }}>Update Settings</button>
             </label>
           </div>
         </div>

@@ -22,6 +22,8 @@ const defaultContent =
 export default function App() {
   let [split, setSplit] = useState(500);
   let [content, setContent] = useState(defaultContent);
+  let [foreground, setForeground] = useState('#ffffff');
+  let [background, setBackground] = useState('#000000');
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
 
@@ -47,9 +49,15 @@ export default function App() {
     setCopy({ ...copyStyle });
   }
 
+  const updateSettings = ({content, foreground, background}) => {
+    setContent(content);
+    setForeground(foreground);
+    setBackground(background);
+  }
+
   return (
     <div className={"App"}>
-      <Header setContent={setContent} updateFont={updateFont}/>
+      <Header content={content} foreground={foreground} background={background} updateFont={updateFont} updateSettings={updateSettings}/>
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
           <Typo
@@ -57,12 +65,16 @@ export default function App() {
             title="Copy (right control panel)"
             style={copy}
             content={content}
+            foreground={foreground}
+            background={background}
           />
           <Typo
             original
             title="Original (left control panel)"
             style={original}
             content={content}
+            foreground={foreground}
+            background={background}
           />
           <Divider />
         </div>
