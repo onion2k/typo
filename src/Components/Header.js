@@ -104,14 +104,13 @@ export default function Header({ content, foreground, background, updateFont, up
       </h1>
       <div className="options">
         <button
-          className="settings"
           onClick={() => {
             setLoadfont(true);
           }}
         >
           Load Fonts
         </button>
-        <button className="settings" 
+        <button
           onClick={() => {
             setSettings(true);
           }}>Settings</button>

@@ -8,6 +8,9 @@
 }
 
 .typo-header > h1 {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-right: 50px;
   font-size: 2.75rem;
 }
@@ -19,25 +22,27 @@
 }
 
 .typo-header .options {
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: 32px;
   padding: 0;
   margin: 0;
 }
 
-.typo-header .settings {
-  background-color: black;
-  border: 1px solid white;
+.typo-header button {
+  background-color: transparent;
+  height: 100%;
+  border: 0;
   color: white;
-  padding: 5px 15px;
-  border-radius: 7px;
+  padding: 0 30px;
   font-size: 1rem;
   cursor: pointer;
-  margin-left: 5px;
 }
 
+.typo-header button:hover {
+  background-color: black;
+}
 
 .dialog {
   font-size: 3rem;
