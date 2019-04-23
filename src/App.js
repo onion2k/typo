@@ -22,8 +22,9 @@ const defaultContent =
 export default function App() {
   let [split, setSplit] = useState(500);
   let [content, setContent] = useState(defaultContent);
-  let [foreground, setForeground] = useState('#ffffff');
-  let [background, setBackground] = useState('#000000');
+  let [foreground, setForeground] = useState("#ffffff");
+  let [background, setBackground] = useState("#000000");
+  let [diff, setDiff] = useState(true);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
 
@@ -35,9 +36,8 @@ export default function App() {
     copyStyle[name] = value;
     setCopy({ ...copyStyle });
   };
-  
-  const updateFont = (fontName) => {
-    
+
+  const updateFont = fontName => {
     cssTextFeatures[0].options.push(fontName);
 
     const originalStyle = { ...original };
@@ -47,17 +47,25 @@ export default function App() {
     const copyStyle = { ...copy };
     copyStyle["fontFamily"] = fontName;
     setCopy({ ...copyStyle });
-  }
+  };
 
-  const updateSettings = ({content, foreground, background}) => {
+  const updateSettings = ({ content, foreground, background, diff }) => {
     setContent(content);
     setForeground(foreground);
     setBackground(background);
-  }
+    setDiff(diff);
+  };
 
   return (
     <div className={"App"}>
-      <Header content={content} foreground={foreground} background={background} updateFont={updateFont} updateSettings={updateSettings}/>
+      <Header
+        content={content}
+        foreground={foreground}
+        background={background}
+        diff={diff}
+        updateFont={updateFont}
+        updateSettings={updateSettings}
+      />
       <SplitContext.Provider value={{ split: split, update: setSplit }}>
         <div className="typo-splitscreen">
           <Typo
@@ -67,6 +75,7 @@ export default function App() {
             content={content}
             foreground={foreground}
             background={background}
+            diff={diff}
           />
           <Typo
             original
@@ -80,18 +89,18 @@ export default function App() {
         </div>
       </SplitContext.Provider>
       <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
-      <Controller
-        id={"original"}
-        style={original}
-        update={setOriginal}
-        transfer={transfer}
-      />
-      <Controller
-        id={"copy"}
-        style={copy}
-        update={setCopy}
-        transfer={transfer}
-      />
+        <Controller
+          id={"original"}
+          style={original}
+          update={setOriginal}
+          transfer={transfer}
+        />
+        <Controller
+          id={"copy"}
+          style={copy}
+          update={setCopy}
+          transfer={transfer}
+        />
       </CssPropertiesContext.Provider>
     </div>
   );

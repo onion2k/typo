@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
-import path from 'path';
+import path from "path";
 import { useDropzone } from "react-dropzone";
 import "./Header.css";
 
@@ -18,14 +18,24 @@ function addFont(file) {
   });
 }
 
-export default function Header({ content, foreground, background, updateFont, updateSettings }) {
+export default function Header({
+  content,
+  foreground,
+  background,
+  diff,
+  updateFont,
+  updateSettings
+}) {
   const [loadfont, setLoadfont] = useState(false);
   const [settings, setSettings] = useState(false);
 
   const onDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(file => {
       const fontLoader = addFont(file);
-      const fontName = file.name.substr(0, file.name.length - path.extname(file.name).length);
+      const fontName = file.name.substr(
+        0,
+        file.name.length - path.extname(file.name).length
+      );
 
       fontLoader.then(font => {
         const fontFace = new FontFace(fontName, font);
@@ -34,7 +44,6 @@ export default function Header({ content, foreground, background, updateFont, up
 
         setLoadfont(false);
         updateFont(fontName);
-
       });
     });
   }, []);
@@ -42,10 +51,11 @@ export default function Header({ content, foreground, background, updateFont, up
   const { getRootProps, isDragActive } = useDropzone({
     onDrop
   });
-  
+
   const contentRef = useRef(null);
   const foregroundRef = useRef(null);
   const backgroundRef = useRef(null);
+  const diffRef = useRef(null);
 
   return (
     <header className="typo-header">
@@ -68,10 +78,12 @@ export default function Header({ content, foreground, background, updateFont, up
             setSettings(false);
           }}
         >
-          <div onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-          }}>
+          <div
+            onClick={e => {
+              e.stopPropagation();
+              e.preventDefault();
+            }}
+          >
             <h2>Settings</h2>
             <label>
               <span>Content</span>
@@ -79,21 +91,45 @@ export default function Header({ content, foreground, background, updateFont, up
             </label>
             <label>
               <span>Text Color</span>
-              <input type="text" defaultValue={foreground} ref={foregroundRef} />
+              <input
+                type="text"
+                defaultValue={foreground}
+                ref={foregroundRef}
+              />
             </label>
             <label>
               <span>Background</span>
-              <input type="text" defaultValue={background} ref={backgroundRef} />
+              <input
+                type="text"
+                defaultValue={background}
+                ref={backgroundRef}
+              />
             </label>
             <label>
-              <button onClick={(e)=>{
-                updateSettings({
-                  content: contentRef.current.value,
-                  foreground: foregroundRef.current.value,
-                  background: backgroundRef.current.value
-                });
-                setSettings(false);
-              }}>Update Settings</button>
+              <span>Diff {diff}</span>
+              <input
+                type="checkbox"
+                defaultChecked={diff}
+                ref={diffRef}
+                onClick={e => {
+                  e.stopPropagation();
+                }}
+              />
+            </label>
+            <label>
+              <button
+                onClick={e => {
+                  updateSettings({
+                    content: contentRef.current.value,
+                    foreground: foregroundRef.current.value,
+                    background: backgroundRef.current.value,
+                    diff: diffRef.current.checked
+                  });
+                  setSettings(false);
+                }}
+              >
+                Update Settings
+              </button>
             </label>
           </div>
         </div>
@@ -113,7 +149,10 @@ export default function Header({ content, foreground, background, updateFont, up
         <button
           onClick={() => {
             setSettings(true);
-          }}>Settings</button>
+          }}
+        >
+          Settings
+        </button>
       </div>
     </header>
   );
