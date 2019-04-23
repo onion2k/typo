@@ -27,7 +27,7 @@ export default function Header({
   updateSettings
 }) {
   const [loadfont, setLoadfont] = useState(false);
-  const [settings, setSettings] = useState(false);
+  const [settings, setSettings] = useState(true);
 
   const onDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(file => {
@@ -86,7 +86,7 @@ export default function Header({
           >
             <h2>Settings</h2>
             <label>
-              <span>Content</span>
+              <span className="content">Content</span>
               <textarea ref={contentRef} defaultValue={content} />
             </label>
             <label>
@@ -106,7 +106,7 @@ export default function Header({
               />
             </label>
             <label>
-              <span>Diff {diff}</span>
+              <span>Visual Diff</span>
               <input
                 type="checkbox"
                 defaultChecked={diff}
@@ -114,9 +114,10 @@ export default function Header({
                 onClick={e => {
                   e.stopPropagation();
                 }}
+                className="vdiff"
               />
             </label>
-            <label>
+            <label className="update">
               <button
                 onClick={e => {
                   updateSettings({

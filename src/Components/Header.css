@@ -45,7 +45,6 @@
 }
 
 .dialog {
-  font-size: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +57,11 @@
   background-color: rgba(0, 0, 0, 0.95);
   z-index: 9;
 }
+
+.dropzone {
+  font-size: 3rem;
+}
+
 .dialog > span {
   font-size: 2rem;
 }
@@ -66,16 +70,19 @@
   width: 50vw;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgb(0,0,0);
   padding: 10px 30px;
   border: 1px solid rgb(255,255,255);
 }
 
-
 .dialog div label {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-bottom: 10px;
+}
+.dialog div label span.content {
+  align-self: flex-start;
 }
 
 .dialog div label span {
@@ -89,4 +96,36 @@
 .dialog div label textarea {
   flex: 2;
   height: 120px;
+}
+
+.dialog div label.update {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dialog div label.update button {
+  padding: 10px 90px;
+  background-color: #444;
+}
+
+.vdiff {
+  min-height: 24px;
+  visibility: hidden;
+  position: relative;
+}
+
+.vdiff:after {
+  width: 100%;
+  display: inline-block;
+  visibility: visible;
+  content: "Visual diff: Off";
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  background-color: #222;
+}
+
+.vdiff:checked:after {
+  content: "Visual diff: On";
+  background-color: #888;
 }
