@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CssPropertiesContext from "./CssProperties";
 import Splitscreen from "./Components/Splitscreen";
+import Fontgrid from "./Components/Fontgrid";
 import Controller from "./Components/Controller";
 import Header from "./Components/Header";
 import "./App.css";
@@ -24,6 +25,8 @@ export default function App() {
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
+  
+  let splitscreen = true;
 
   const transfer = (name, value) => {
     const originalStyle = { ...original };
@@ -62,14 +65,22 @@ export default function App() {
         updateSettings={updateSettings}
       />
       <div className="typo-splitscreen">
-        <Splitscreen
+        {splitscreen ? <Splitscreen
           copy={copy}
           original={original}
           content={content}
           foreground={foreground}
           background={background}
           diff={diff}
-        />
+        /> : <Fontgrid
+          title="Font grid"
+          style={original}
+          content={content}
+          foreground={foreground}
+          background={background}
+          diff={diff}
+        /> }
+
       </div>
       <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
         <Controller
