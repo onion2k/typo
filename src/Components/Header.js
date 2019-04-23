@@ -27,7 +27,7 @@ export default function Header({
   updateSettings
 }) {
   const [loadfont, setLoadfont] = useState(false);
-  const [settings, setSettings] = useState(true);
+  const [settings, setSettings] = useState(false);
 
   const onDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(file => {
@@ -129,7 +129,7 @@ export default function Header({
                   setSettings(false);
                 }}
               >
-                Update Settings
+                Update and close
               </button>
             </label>
           </div>
@@ -146,6 +146,13 @@ export default function Header({
           }}
         >
           Load Fonts
+        </button>
+        <button
+          onClick={() => {
+            // setFontviewer(true);
+          }}
+        >
+          Font Grid
         </button>
         <button
           onClick={() => {

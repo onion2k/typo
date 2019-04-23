@@ -1,6 +1,6 @@
 .controller {
   background-color: #f0f0f0;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .controller-options {

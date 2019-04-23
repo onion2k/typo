@@ -19,7 +19,7 @@ export default function Typo(data) {
   typoStyle.color = foreground;
   typoStyle.backgroundColor = background;
   if (diff) {
-    typoStyle.mixBlendMode = "exclusion";
+    typoStyle.mixBlendMode = "difference";
   }
 
   return (

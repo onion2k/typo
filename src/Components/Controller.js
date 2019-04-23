@@ -6,7 +6,7 @@ import "./Controller.css";
 export default function Controller(data) {
   const { id } = data;
 
-  const [view, setView] = useState("all");
+  const [view, setView] = useState("simplified");
 
   const renderProperties = () => {
     if (view === "css") {
@@ -38,18 +38,6 @@ export default function Controller(data) {
             <input
               type="radio"
               name={`view-${id}`}
-              value="all"
-              checked={view === "all"}
-              onChange={() => {
-                setView("all");
-              }}
-            />{" "}
-            <span>All Properties</span>
-          </label>
-          <label>
-            <input
-              type="radio"
-              name={`view-${id}`}
               value="simplified"
               checked={view === "simplified"}
               onChange={() => {
@@ -57,6 +45,18 @@ export default function Controller(data) {
               }}
             />{" "}
             <span>Simplified</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name={`view-${id}`}
+              value="all"
+              checked={view === "all"}
+              onChange={() => {
+                setView("all");
+              }}
+            />{" "}
+            <span>All Properties</span>
           </label>
         </div>
       </div>

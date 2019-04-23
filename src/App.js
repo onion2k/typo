@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import SplitContext from "./Split";
 import CssPropertiesContext from "./CssProperties";
-import Typo from "./Components/Typo";
+import Splitscreen from "./Components/Splitscreen";
 import Controller from "./Components/Controller";
-import Divider from "./Components/Divider";
 import Header from "./Components/Header";
 import "./App.css";
 
@@ -20,11 +18,10 @@ const defaultContent =
   "Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.";
 
 export default function App() {
-  let [split, setSplit] = useState(500);
   let [content, setContent] = useState(defaultContent);
   let [foreground, setForeground] = useState("#ffffff");
   let [background, setBackground] = useState("#000000");
-  let [diff, setDiff] = useState(true);
+  let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
 
@@ -39,11 +36,9 @@ export default function App() {
 
   const updateFont = fontName => {
     cssTextFeatures[0].options.push(fontName);
-
     const originalStyle = { ...original };
     originalStyle["fontFamily"] = fontName;
     setOriginal({ ...originalStyle });
-
     const copyStyle = { ...copy };
     copyStyle["fontFamily"] = fontName;
     setCopy({ ...copyStyle });
@@ -66,28 +61,16 @@ export default function App() {
         updateFont={updateFont}
         updateSettings={updateSettings}
       />
-      <SplitContext.Provider value={{ split: split, update: setSplit }}>
-        <div className="typo-splitscreen">
-          <Typo
-            copy
-            title="Copy (right control panel)"
-            style={copy}
-            content={content}
-            foreground={foreground}
-            background={background}
-            diff={diff}
-          />
-          <Typo
-            original
-            title="Original (left control panel)"
-            style={original}
-            content={content}
-            foreground={foreground}
-            background={background}
-          />
-          <Divider />
-        </div>
-      </SplitContext.Provider>
+      <div className="typo-splitscreen">
+        <Splitscreen
+          copy={copy}
+          original={original}
+          content={content}
+          foreground={foreground}
+          background={background}
+          diff={diff}
+        />
+      </div>
       <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
         <Controller
           id={"original"}
