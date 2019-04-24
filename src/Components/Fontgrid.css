@@ -1,0 +1,60 @@
+.fontgrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fontgrid.copy {
+  z-index: 2;
+}
+
+.fontgrid > span.title {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  writing-mode: tb-rl;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.fontgrid.copy > span.title {
+  width: 15px;
+  bottom: 10px;
+  right: 5px;
+  writing-mode: tb-rl;
+  transform: rotate(-180deg);
+}
+
+.fontgrid > div {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.fontgrid > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border-top: 1px dotted #444;
+  border-left: 1px dotted #444;
+}
+
+.fontgrid > div > span:nth-child(-n + 13) {
+  border-top: none;
+}
+
+.fontgrid > div > span:nth-child(13n + 1) {
+  border-left: none;
+}

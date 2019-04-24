@@ -25,7 +25,7 @@ export default function App() {
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
-  
+
   let splitscreen = true;
 
   const transfer = (name, value) => {
@@ -65,22 +65,25 @@ export default function App() {
         updateSettings={updateSettings}
       />
       <div className="typo-splitscreen">
-        {splitscreen ? <Splitscreen
-          copy={copy}
-          original={original}
-          content={content}
-          foreground={foreground}
-          background={background}
-          diff={diff}
-        /> : <Fontgrid
-          title="Font grid"
-          style={original}
-          content={content}
-          foreground={foreground}
-          background={background}
-          diff={diff}
-        /> }
-
+        {splitscreen ? (
+          <Splitscreen
+            copy={copy}
+            original={original}
+            content={content}
+            foreground={foreground}
+            background={background}
+            diff={diff}
+          />
+        ) : (
+          <Fontgrid
+            title="Font grid"
+            style={original}
+            content={content}
+            foreground={foreground}
+            background={background}
+            diff={diff}
+          />
+        )}
       </div>
       <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
         <Controller
