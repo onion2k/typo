@@ -14,6 +14,7 @@ export default function Typo(data) {
     typoStyle.clipPath = `polygon(${split.split}px 0, 100vw 0, 100vw 100vh, ${
       split.split
     }px 100vh)`;
+    typoStyle.WebkitClipPath = typoStyle.clipPath;
   }
 
   typoStyle.color = foreground;
