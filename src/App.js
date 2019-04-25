@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CssPropertiesContext from "./CssProperties";
 import Splitscreen from "./Components/Splitscreen";
+import Typo from "./Components/Typo";
 import Fontgrid from "./Components/Fontgrid";
 import Controller from "./Components/Controller";
 import Header from "./Components/Header";
@@ -25,8 +26,7 @@ export default function App() {
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
-
-  let splitscreen = true;
+  let [splitscreen, setSplitscreen] = useState(false);
 
   const transfer = (name, value) => {
     const originalStyle = { ...original };
@@ -63,26 +63,49 @@ export default function App() {
         diff={diff}
         updateFont={updateFont}
         updateSettings={updateSettings}
+        splitscreen={splitscreen}
+        setSplitscreen={setSplitscreen}
       />
       <div className="typo-splitscreen">
         {splitscreen ? (
-          <Splitscreen
-            copy={copy}
-            original={original}
-            content={content}
-            foreground={foreground}
-            background={background}
-            diff={diff}
-          />
+          <Splitscreen>
+            <Typo
+              copy
+              title="Copy (right)"
+              style={copy}
+              content={content}
+              foreground={foreground}
+              background={background}
+              diff={diff}
+            />
+            <Typo
+              original
+              title="Original (left)"
+              style={original}
+              content={content}
+              foreground={foreground}
+              background={background}
+            />
+          </Splitscreen>
         ) : (
-          <Fontgrid
-            title="Font grid"
-            style={original}
-            content={content}
-            foreground={foreground}
-            background={background}
-            diff={diff}
-          />
+          <Splitscreen>
+            <Fontgrid
+              copy
+              title="Font grid (right)"
+              style={copy}
+              foreground={foreground}
+              background={background}
+              diff={diff}
+            />
+            <Fontgrid
+              original
+              title="Font grid (left)"
+              style={original}
+              foreground={foreground}
+              background={background}
+              diff={diff}
+            />
+          </Splitscreen>
         )}
       </div>
       <CssPropertiesContext.Provider value={{ cssTextFeatures }}>

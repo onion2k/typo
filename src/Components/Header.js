@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from "react";
 import path from "path";
 import { useDropzone } from "react-dropzone";
 import "./Header.css";
+import Splitscreen from "./Splitscreen";
 
 const cssdata = require("../ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
@@ -24,7 +25,9 @@ export default function Header({
   background,
   diff,
   updateFont,
-  updateSettings
+  updateSettings,
+  setSplitscreen,
+  splitscreen
 }) {
   const [loadfont, setLoadfont] = useState(false);
   const [settings, setSettings] = useState(false);
@@ -142,17 +145,17 @@ export default function Header({
       <div className="options">
         <button
           onClick={() => {
+            setSplitscreen(!splitscreen);
+          }}
+        >
+          {splitscreen ? "Show Font Grid" : "Show Content"}
+        </button>
+        <button
+          onClick={() => {
             setLoadfont(true);
           }}
         >
           Load Fonts
-        </button>
-        <button
-          onClick={() => {
-            // setFontviewer(true);
-          }}
-        >
-          Font Grid
         </button>
         <button
           onClick={() => {
