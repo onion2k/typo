@@ -26,7 +26,7 @@ export default function App() {
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
-  let [splitscreen, setSplitscreen] = useState(false);
+  let [fontgrid, setFontgrid] = useState(false);
 
   const transfer = (name, value) => {
     const originalStyle = { ...original };
@@ -63,11 +63,11 @@ export default function App() {
         diff={diff}
         updateFont={updateFont}
         updateSettings={updateSettings}
-        splitscreen={splitscreen}
-        setSplitscreen={setSplitscreen}
+        fontgrid={fontgrid}
+        setFontgrid={setFontgrid}
       />
       <div className="typo-splitscreen">
-        {splitscreen ? (
+        {!fontgrid ? (
           <Splitscreen>
             <Typo
               copy

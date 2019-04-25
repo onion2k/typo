@@ -26,8 +26,8 @@ export default function Header({
   diff,
   updateFont,
   updateSettings,
-  setSplitscreen,
-  splitscreen
+  fontgrid,
+  setFontgrid
 }) {
   const [loadfont, setLoadfont] = useState(false);
   const [settings, setSettings] = useState(false);
@@ -145,10 +145,10 @@ export default function Header({
       <div className="options">
         <button
           onClick={() => {
-            setSplitscreen(!splitscreen);
+            setFontgrid(!fontgrid);
           }}
         >
-          {splitscreen ? "Show Font Grid" : "Show Content"}
+          {!fontgrid ? "Show Font Grid" : "Show Content"}
         </button>
         <button
           onClick={() => {
