@@ -11,9 +11,14 @@ const cssdata = require("./ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 const defaultState = {
+  fontFamily: "serif",
   fontSize: "2em",
   maxWidth: "960px"
 };
+
+const defaultCopyState = Object.assign({}, defaultState, {
+  fontFamily: "sans-serif"
+});
 
 const defaultContent =
   "Welcome to Typo. You can explore different CSS text properties by changing the values in the two control panels below to update the original and copy text, and move the sliding divider left and right to reveal any differences. Use the arrow next to each property to copy its value to the other panel.";
@@ -24,7 +29,7 @@ export default function App() {
   let [background, setBackground] = useState("#ffffff");
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
-  let [copy, setCopy] = useState(defaultState);
+  let [copy, setCopy] = useState(defaultCopyState);
   let [fontgrid, setFontgrid] = useState(false);
 
   const transfer = (name, value) => {
