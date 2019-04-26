@@ -41,14 +41,17 @@ export default function App() {
     setCopy({ ...copyStyle });
   };
 
-  const updateFont = fontName => {
+  const updateFont = (fontName, updateOriginal) => {
     cssTextFeatures[0].options.push(fontName);
-    const originalStyle = { ...original };
-    originalStyle["fontFamily"] = fontName;
-    setOriginal({ ...originalStyle });
-    const copyStyle = { ...copy };
-    copyStyle["fontFamily"] = fontName;
-    setCopy({ ...copyStyle });
+    if (updateOriginal) {
+      const originalStyle = { ...original };
+      originalStyle["fontFamily"] = fontName;
+      setOriginal({ ...originalStyle });
+    } else {
+      const copyStyle = { ...copy };
+      copyStyle["fontFamily"] = fontName;
+      setCopy({ ...copyStyle });
+    }
   };
 
   const updateSettings = ({ content, foreground, background, diff }) => {
@@ -118,12 +121,14 @@ export default function App() {
           style={original}
           update={setOriginal}
           transfer={transfer}
+          updateFont={updateFont}
         />
         <Controller
           id={"copy"}
           style={copy}
           update={setCopy}
           transfer={transfer}
+          updateFont={updateFont}
         />
       </CssPropertiesContext.Provider>
     </div>

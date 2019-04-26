@@ -1,28 +1,64 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
+import path from "path";
+import { useDropzone } from "react-dropzone";
 import "./Properties.css";
+
+function addFont(file) {
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onabort = () => console.log("file reading was aborted");
+    fr.onerror = () => console.log("file reading has failed");
+    fr.onload = () => {
+      resolve(fr.result);
+    };
+    fr.readAsArrayBuffer(file);
+  });
+}
 
 const cssdata = require("../ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Properties(data) {
-  
   const { view, style, update, transfer } = data;
-  
+
   const change = e => {
     const newstyle = { ...style };
     newstyle[e.target.name] = e.target.value;
     update({ ...newstyle });
   };
-  
+
+  const onDrop = useCallback(acceptedFiles => {
+    acceptedFiles.forEach(file => {
+      const fontLoader = addFont(file);
+      const fontName = file.name.substr(
+        0,
+        file.name.length - path.extname(file.name).length
+      );
+
+      fontLoader.then(font => {
+        const fontFace = new FontFace(fontName, font);
+        fontFace.load();
+        document.fonts.add(fontFace);
+        data.updateFont(fontName, data.id === "original");
+      });
+    });
+  }, []);
+
+  const { getRootProps, isDragActive } = useDropzone({
+    onDrop
+  });
+
   const properties = cssTextFeatures.map(s => {
-    if (view==='simplified' && s.simple!==true) { return null; }
+    if (view === "simplified" && s.simple !== true) {
+      return null;
+    }
     let input = (
       <input
         name={s.name}
         type="text"
         onChange={change}
         placeholder="inherit"
-        value={style[s.name]}
+        defaultValue={style[s.name]}
       />
     );
     if (s.options) {
@@ -59,12 +95,17 @@ export default function Properties(data) {
           </a>
         </label>
         {input}
-        <button onClick={() => transfer(s.name, style[s.name])}>
-          ⇌
-        </button>
+        <button onClick={() => transfer(s.name, style[s.name])}>⇌</button>
       </React.Fragment>
     );
   });
 
-  return <div className="properties">{properties}</div>;
+  return (
+    <div
+      className={`properties dropzone ${isDragActive ? "drag" : ""}`}
+      {...getRootProps()}
+    >
+      {properties}
+    </div>
+  );
 }
