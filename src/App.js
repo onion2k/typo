@@ -11,7 +11,6 @@ const cssdata = require("./ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 const defaultState = {
-  color: "#ffffff",
   fontSize: "2em",
   maxWidth: "960px"
 };
@@ -21,8 +20,8 @@ const defaultContent =
 
 export default function App() {
   let [content, setContent] = useState(defaultContent);
-  let [foreground, setForeground] = useState("#ffffff");
-  let [background, setBackground] = useState("#000000");
+  let [foreground, setForeground] = useState("#000000");
+  let [background, setBackground] = useState("#ffffff");
   let [diff, setDiff] = useState(false);
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultState);
