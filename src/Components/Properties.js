@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import path from "path";
 import { useDropzone } from "react-dropzone";
+import CSSInput from './CSSInput'
 import "./Properties.css";
 
 function addFont(file) {
@@ -53,12 +54,11 @@ export default function Properties(data) {
       return null;
     }
     let input = (
-      <input
+      <CSSInput
         name={s.name}
-        type="text"
-        onChange={change}
+        update={change}
         placeholder="inherit"
-        defaultValue={style[s.name]}
+        value={style[s.name]}
       />
     );
     if (s.options) {
