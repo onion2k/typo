@@ -6,6 +6,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "movementv";
+  src: url("./fonts/movementv.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   position: relative;
   height: 100vh;

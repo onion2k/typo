@@ -10,6 +10,17 @@ import "./App.css";
 const cssdata = require("./ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
+cssTextFeatures[0].options.push("movementv");
+
+document.fonts.ready.then((fontData)=>{
+  for (let fontFace of fontData.values()) {
+    console.log('FontFace:');
+    for (var property in fontFace) {
+      console.log('  ' + property + ': ' + fontFace[property]);
+    }
+  }
+});
+
 const defaultState = {
   fontFamily: "serif",
   fontSize: "2em",

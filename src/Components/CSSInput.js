@@ -43,6 +43,7 @@ export default function CSSInput({ name, value, type, placeholder, update}) {
   }
   
   const updateStateValue = (mod) => {
+    if (!value) return;
     let [ val, whole, quantity, fraction, unit ] = value.match(length);
     if (fraction) {
       whole = parseFloat(whole)+(mod*0.1);
