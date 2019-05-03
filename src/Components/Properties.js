@@ -1,4 +1,5 @@
-import React, { useCallback } from "react";
+import React, { useContext, useCallback } from "react";
+import CssPropertiesContext from "../CssProperties";
 import path from "path";
 import { useDropzone } from "react-dropzone";
 import CSSInput from "./CSSInput";
@@ -16,16 +17,16 @@ function addFont(file) {
   });
 }
 
-const cssdata = require("../ctf.json");
-const cssTextFeatures = cssdata.cssTextFeatures;
+// const cssdata = require("../ctf.json");
+// const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Properties(data) {
   const { view, style, update, transfer, updateFont } = data;
 
+  let { cssTextFeatures } = useContext(CssPropertiesContext);
+
   const change = e => {
-    const newstyle = { ...style };
-    newstyle[e.target.name] = e.target.value;
-    update({ ...newstyle });
+    update({ ...style, [e.target.name]: e.target.value });
   };
 
   const onDrop = acceptedFiles => {
@@ -56,7 +57,7 @@ export default function Properties(data) {
     let input = (
       <CSSInput
         name={s.name}
-        update={change}
+        change={change}
         placeholder="inherit"
         value={style[s.name]}
       />

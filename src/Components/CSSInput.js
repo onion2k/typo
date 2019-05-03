@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const length = /^((\d+)\.?(\d?))(em|rem|px)$/;
 
-export default function CSSInput({ name, value, type, placeholder, update }) {
-  const ref = useRef(null);
+export default function CSSInput({ name, value, type, placeholder, change }) {
   let [statevalue, setStateValue] = useState(value);
 
   useEffect(() => {
@@ -17,8 +16,8 @@ export default function CSSInput({ name, value, type, placeholder, update }) {
         value: statevalue
       }
     };
-    update(p);
-  }, [name, statevalue, update]);
+    change(p);
+  }, [name, statevalue, change]);
 
   const onKeyUp = e => {
     if (e.keyCode === 38 || e.keyCode === 40) {
@@ -31,7 +30,7 @@ export default function CSSInput({ name, value, type, placeholder, update }) {
   };
 
   const onWheel = e => {
-    e.preventDefault();
+    // e.preventDefault();
     let mod = 1;
     if (e.deltaY > 0) {
       mod = -1;
@@ -41,14 +40,15 @@ export default function CSSInput({ name, value, type, placeholder, update }) {
 
   const updateStateValue = mod => {
     if (!value) return;
-    let [val, whole, quantity, fraction, unit] = value.match(length);
+    let [val, whole, quantity, fraction, unit] = statevalue.match(length);
+    let newval;
     if (fraction) {
-      whole = parseFloat(whole) + mod * 0.1;
-      whole = whole.toFixed(1);
+      newval = parseFloat(whole) + mod * 0.1;
+      newval = newval.toFixed(1);
     } else {
-      whole = parseFloat(whole) + mod;
+      newval = parseFloat(whole) + mod;
     }
-    setStateValue(`${whole}${unit}`);
+    setStateValue(`${newval}${unit}`);
   };
 
   const onChange = e => {
@@ -57,7 +57,6 @@ export default function CSSInput({ name, value, type, placeholder, update }) {
 
   return (
     <input
-      ref={ref}
       onKeyUp={onKeyUp}
       onWheel={onWheel}
       onChange={onChange}

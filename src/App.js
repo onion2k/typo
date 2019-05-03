@@ -21,7 +21,6 @@ cssTextFeatures[0].options.push("movementv");
 // });
 
 const defaultState = {
-  fontFamily: "serif",
   fontSize: "2em",
   maxWidth: "960px"
 };
@@ -44,12 +43,12 @@ export default function App() {
   let [copy, setCopy] = useState(defaultCopyState);
 
   const transfer = (name, value) => {
-    const originalStyle = { ...original };
-    originalStyle[name] = value;
-    setOriginal({ ...originalStyle });
-    const copyStyle = { ...copy };
-    copyStyle[name] = value;
-    setCopy({ ...copyStyle });
+    setOriginal(prevState => {
+      return { ...prevState, [name]: value };
+    });
+    setCopy(prevState => {
+      return { ...prevState, [name]: value };
+    });
   };
 
   const updateFont = (fontName, updateOriginal) => {
@@ -136,14 +135,14 @@ export default function App() {
           style={original}
           update={setOriginal}
           transfer={transfer}
-          updateFont={updateFont}
+          updateFont={useCallback(updateFont, [original])}
         />
         <Controller
           id={"copy"}
           style={copy}
           update={setCopy}
           transfer={transfer}
-          updateFont={updateFont}
+          updateFont={useCallback(updateFont, [copy])}
         />
       </CssPropertiesContext.Provider>
     </div>
