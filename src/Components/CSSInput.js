@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const length = /^((\d+)\.?(\d?))(em|rem|px)$/;
+const length = /^((-?\d+)\.?(\d?))(em|rem|px)$/;
 
 export default function CSSInput({ name, value, type, placeholder, change }) {
   let [statevalue, setStateValue] = useState(value);
@@ -8,16 +8,6 @@ export default function CSSInput({ name, value, type, placeholder, change }) {
   useEffect(() => {
     setStateValue(value);
   }, [value]);
-
-  useEffect(() => {
-    const p = {
-      target: {
-        name: name,
-        value: statevalue
-      }
-    };
-    change(p);
-  }, [name, statevalue, change]);
 
   const onKeyUp = e => {
     if (e.keyCode === 38 || e.keyCode === 40) {
@@ -48,7 +38,13 @@ export default function CSSInput({ name, value, type, placeholder, change }) {
     } else {
       newval = parseFloat(whole) + mod;
     }
-    setStateValue(`${newval}${unit}`);
+
+    change({
+      target: {
+        name: name,
+        value: `${newval}${unit}`
+      }
+    });
   };
 
   const onChange = e => {

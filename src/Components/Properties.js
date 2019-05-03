@@ -57,7 +57,9 @@ export default function Properties(data) {
     let input = (
       <CSSInput
         name={s.name}
-        change={change}
+        change={value => {
+          change(value);
+        }}
         placeholder="inherit"
         value={style[s.name]}
       />
