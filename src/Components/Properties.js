@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import path from "path";
 import { useDropzone } from "react-dropzone";
-import CSSInput from './CSSInput'
+import CSSInput from "./CSSInput";
 import "./Properties.css";
 
 function addFont(file) {
@@ -20,7 +20,7 @@ const cssdata = require("../ctf.json");
 const cssTextFeatures = cssdata.cssTextFeatures;
 
 export default function Properties(data) {
-  const { view, style, update, transfer } = data;
+  const { view, style, update, transfer, updateFont } = data;
 
   const change = e => {
     const newstyle = { ...style };
@@ -28,7 +28,7 @@ export default function Properties(data) {
     update({ ...newstyle });
   };
 
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = acceptedFiles => {
     acceptedFiles.forEach(file => {
       const fontLoader = addFont(file);
       const fontName = file.name.substr(
@@ -40,10 +40,10 @@ export default function Properties(data) {
         const fontFace = new FontFace(fontName, font);
         fontFace.load();
         document.fonts.add(fontFace);
-        data.updateFont(fontName, data.id === "original");
+        updateFont(fontName, data.id === "original");
       });
     });
-  }, []);
+  };
 
   const { getRootProps, isDragActive } = useDropzone({
     onDrop

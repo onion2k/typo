@@ -2,26 +2,25 @@ import React, { useState, useEffect, useRef } from "react";
 
 const length = /^((\d+)\.?(\d?))(em|rem|px)$/;
 
-export default function CSSInput({ name, value, type, placeholder, update}) {
-  
+export default function CSSInput({ name, value, type, placeholder, update }) {
   const ref = useRef(null);
   let [statevalue, setStateValue] = useState(value);
 
-  useEffect(()=>{
+  useEffect(() => {
     setStateValue(value);
   }, [value]);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const p = {
       target: {
         name: name,
         value: statevalue
       }
-    }
+    };
     update(p);
-  }, [statevalue]);
-  
-  const onKeyUp = (e) => {
+  }, [name, statevalue, update]);
+
+  const onKeyUp = e => {
     if (e.keyCode === 38 || e.keyCode === 40) {
       let mod = 1;
       if (e.keyCode === 40) {
@@ -29,34 +28,32 @@ export default function CSSInput({ name, value, type, placeholder, update}) {
       }
       updateStateValue(mod);
     }
+  };
 
-  }
-
-  const onWheel = (e) => {
+  const onWheel = e => {
     e.preventDefault();
     let mod = 1;
     if (e.deltaY > 0) {
       mod = -1;
     }
     updateStateValue(mod);
+  };
 
-  }
-  
-  const updateStateValue = (mod) => {
+  const updateStateValue = mod => {
     if (!value) return;
-    let [ val, whole, quantity, fraction, unit ] = value.match(length);
+    let [val, whole, quantity, fraction, unit] = value.match(length);
     if (fraction) {
-      whole = parseFloat(whole)+(mod*0.1);
+      whole = parseFloat(whole) + mod * 0.1;
       whole = whole.toFixed(1);
     } else {
-      whole = parseFloat(whole)+mod;
+      whole = parseFloat(whole) + mod;
     }
     setStateValue(`${whole}${unit}`);
-  }
-  
+  };
+
   const onChange = e => {
     setStateValue(e.target.value);
-  }
+  };
 
   return (
     <input

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CssPropertiesContext from "./CssProperties";
 import Splitscreen from "./Components/Splitscreen";
 import Typo from "./Components/Typo";
@@ -12,14 +12,13 @@ const cssTextFeatures = cssdata.cssTextFeatures;
 
 cssTextFeatures[0].options.push("movementv");
 
-document.fonts.ready.then((fontData)=>{
-  for (let fontFace of fontData.values()) {
-    console.log('FontFace:');
-    for (var property in fontFace) {
-      console.log('  ' + property + ': ' + fontFace[property]);
-    }
-  }
-});
+// document.fonts.ready.then(fontData => {
+//   for (let fontFace of fontData.values()) {
+//     for (var property in fontFace) {
+//       console.log("  " + property + ": " + fontFace[property]);
+//     }
+//   }
+// });
 
 const defaultState = {
   fontFamily: "serif",
@@ -39,9 +38,10 @@ export default function App() {
   let [foreground, setForeground] = useState("#000000");
   let [background, setBackground] = useState("#ffffff");
   let [diff, setDiff] = useState(false);
+  let [fontgrid, setFontgrid] = useState(false);
+
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultCopyState);
-  let [fontgrid, setFontgrid] = useState(false);
 
   const transfer = (name, value) => {
     const originalStyle = { ...original };
@@ -55,13 +55,13 @@ export default function App() {
   const updateFont = (fontName, updateOriginal) => {
     cssTextFeatures[0].options.push(fontName);
     if (updateOriginal) {
-      const originalStyle = { ...original };
-      originalStyle["fontFamily"] = fontName;
-      setOriginal({ ...originalStyle });
+      setOriginal(prevState => {
+        return { ...prevState, fontFamily: fontName };
+      });
     } else {
-      const copyStyle = { ...copy };
-      copyStyle["fontFamily"] = fontName;
-      setCopy({ ...copyStyle });
+      setCopy(prevState => {
+        return { ...prevState, fontFamily: fontName };
+      });
     }
   };
 
@@ -71,6 +71,10 @@ export default function App() {
     setBackground(background);
     setDiff(diff);
   };
+
+  // useEffect(() => {
+  //   console.log(copy);
+  // }, [copy]);
 
   return (
     <div className={"App"}>
