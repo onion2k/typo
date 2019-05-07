@@ -116,20 +116,28 @@ export default function Properties(data) {
   });
 
   if (userFonts.hasOwnProperty(style["fontFamily"])) {
-    console.log("User loaded font");
 
-    userFonts[style["fontFamily"]].axes.forEach(a => {
-      console.log(a);
-      properties.splice(
-        2,
-        0,
-        <React.Fragment key={a.tag}>
-          <label htmlFor={a.tag}>{a.name.en}</label>
-          RANGE
-          <button onClick={() => transfer(a.tag, style[a.tag])}>⇌</button>
-        </React.Fragment>
-      );
+    const varProps = userFonts[style["fontFamily"]].axes.map(a => {
+      console.log(a)
+      return (<React.Fragment key={a.tag}>
+        <label htmlFor={a.tag}>(Variable) {a.name.en}</label>
+        <input 
+          type={'range'}
+          min={a.minValue}
+          max={a.maxValue}
+          onChange={(e)=>{
+            change({ target: { name: 'fontVariationSettings', value: `'${a.tag}' ${e.target.value}` }});
+          }}
+        />
+        <button onClick={() => transfer(a.tag, style[a.tag])}>⇌</button>
+      </React.Fragment>);
     });
+    properties.splice(
+      2,
+      0,
+      varProps
+    );
+
   }
 
   return (

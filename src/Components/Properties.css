@@ -13,6 +13,10 @@
   overflow: scroll;
 }
 
+.properties > label {
+  color: green;
+}
+
 .properties > label > a {
   color: red;
   text-decoration: none;
