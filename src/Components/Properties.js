@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import CssPropertiesContext from "../CssProperties";
 import path from "path";
 import { useDropzone } from "react-dropzone";
@@ -14,22 +14,15 @@ function addFont(file) {
     fr.onabort = () => console.log("file reading was aborted");
     fr.onerror = () => console.log("file reading has failed");
     fr.onload = () => {
-      const f = opentype.parse(fr.result);
-      const vf = new VariableFont(f);
-
-      console.log(vf.getAxes());
-
       resolve(fr.result);
     };
     fr.readAsArrayBuffer(file);
   });
 }
 
-// const cssdata = require("../ctf.json");
-// const cssTextFeatures = cssdata.cssTextFeatures;
-
 export default function Properties(data) {
   const { view, style, update, transfer, updateFont } = data;
+  let [userFonts, setUserFonts] = useState({});
 
   let { cssTextFeatures } = useContext(CssPropertiesContext);
 
@@ -48,6 +41,17 @@ export default function Properties(data) {
       fontLoader.then(font => {
         const fontFace = new FontFace(fontName, font);
         fontFace.load();
+
+        const f = opentype.parse(font);
+        const vf = new VariableFont(f);
+
+        setUserFonts({
+          ...userFonts,
+          [fontName]: {
+            axes: vf.getAxes()
+          }
+        });
+
         document.fonts.add(fontFace);
         updateFont(fontName, data.id === "original");
       });
@@ -110,6 +114,23 @@ export default function Properties(data) {
       </React.Fragment>
     );
   });
+
+  if (userFonts.hasOwnProperty(style["fontFamily"])) {
+    console.log("User loaded font");
+
+    userFonts[style["fontFamily"]].axes.forEach(a => {
+      console.log(a);
+      properties.splice(
+        2,
+        0,
+        <React.Fragment key={a.tag}>
+          <label htmlFor={a.tag}>{a.name.en}</label>
+          RANGE
+          <button onClick={() => transfer(a.tag, style[a.tag])}>⇌</button>
+        </React.Fragment>
+      );
+    });
+  }
 
   return (
     <div

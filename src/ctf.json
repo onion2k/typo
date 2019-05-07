@@ -17,6 +17,11 @@
       ],
       "simple": true
     },
+    {
+      "name": "fontVariationSettings",
+      "label": "font-variation-settings",
+      "simple": true
+    },
     { "name": "fontSize", "label": "Font-Size", "simple": true },
     {
       "name": "fontStyle",
@@ -35,10 +40,6 @@
       "options": ["normal", "none"]
     },
     { "name": "fontWeight", "label": "Font-weight" },
-    {
-      "name": "fontVariationSettings",
-      "label": "font-variation-settings"
-    },
     {
       "name": "fontFeatureSettings",
       "label": "font-feature-settings"
