@@ -118,15 +118,19 @@ export default function Properties(data) {
   if (userFonts.hasOwnProperty(style["fontFamily"])) {
 
     const varProps = userFonts[style["fontFamily"]].axes.map(a => {
-      console.log(a)
       return (<React.Fragment key={a.tag}>
         <label htmlFor={a.tag}>(Variable) {a.name.en}</label>
         <input 
           type={'range'}
           min={a.minValue}
           max={a.maxValue}
+          defaultValue={a.defaultValue}
           onChange={(e)=>{
-            change({ target: { name: 'fontVariationSettings', value: `'${a.tag}' ${e.target.value}` }});
+            a.value = e.target.value;
+            const newValue = userFonts[style["fontFamily"]].axes.map((a)=>{
+              return `'${a.tag}' ${a.value || a.defaultValue}`;
+            }).join(', ')
+            change({ target: { name: 'fontVariationSettings', value: newValue }});
           }}
         />
         <button onClick={() => transfer(a.tag, style[a.tag])}>⇌</button>
