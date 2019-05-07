@@ -1,9 +1,12 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext } from "react";
 import CssPropertiesContext from "../CssProperties";
 import path from "path";
 import { useDropzone } from "react-dropzone";
 import CSSInput from "./CSSInput";
 import "./Properties.css";
+
+const opentype = require("opentype.js");
+const VariableFont = require("../variablefont.js");
 
 function addFont(file) {
   return new Promise((resolve, reject) => {
@@ -11,6 +14,11 @@ function addFont(file) {
     fr.onabort = () => console.log("file reading was aborted");
     fr.onerror = () => console.log("file reading has failed");
     fr.onload = () => {
+      const f = opentype.parse(fr.result);
+      const vf = new VariableFont(f);
+
+      console.log(vf.getAxes());
+
       resolve(fr.result);
     };
     fr.readAsArrayBuffer(file);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import CssPropertiesContext from "./CssProperties";
 import Splitscreen from "./Components/Splitscreen";
 import Typo from "./Components/Typo";
@@ -12,13 +12,13 @@ const cssTextFeatures = cssdata.cssTextFeatures;
 
 cssTextFeatures[0].options.push("movementv");
 
-// document.fonts.ready.then(fontData => {
-//   for (let fontFace of fontData.values()) {
-//     for (var property in fontFace) {
-//       console.log("  " + property + ": " + fontFace[property]);
-//     }
-//   }
-// });
+document.fonts.ready.then(fontData => {
+  for (let fontFace of fontData.values()) {
+    for (var property in fontFace) {
+      console.log("  " + property + ": " + fontFace[property]);
+    }
+  }
+});
 
 const defaultState = {
   fontSize: "2em",

@@ -30,6 +30,7 @@ export default function CSSInput({ name, value, type, placeholder, change }) {
 
   const updateStateValue = mod => {
     if (!value) return;
+    // eslint-disable-next-line no-unused-vars
     let [val, whole, quantity, fraction, unit] = statevalue.match(length);
     let newval;
     if (fraction) {
