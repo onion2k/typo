@@ -50,6 +50,12 @@ export default function CSSInput({ name, value, type, placeholder, change }) {
 
   const onChange = e => {
     setStateValue(e.target.value);
+    change({
+      target: {
+        name: name,
+        value: e.target.value
+      }
+    });
   };
 
   return (
