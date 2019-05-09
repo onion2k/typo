@@ -61,6 +61,9 @@ export default function Controller(data) {
         </div>
       </div>
       {renderProperties()}
+      <div className="controller-footer">
+        Drop a font file on the style area to load a custom font
+      </div>
     </div>
   );
 }
