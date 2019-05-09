@@ -17,7 +17,7 @@ export default function Controller(data) {
   };
 
   return (
-    <div className={`controller`}>
+    <div className="controller">
       <div className="controller-options">
         <div>
           <label>
