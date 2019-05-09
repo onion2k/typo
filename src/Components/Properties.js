@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import CssPropertiesContext from "../CssProperties";
 import path from "path";
 import { useDropzone } from "react-dropzone";
@@ -22,9 +22,8 @@ function addFont(file) {
 
 export default function Properties(data) {
   const { view, style, update, transfer, updateFont } = data;
-  let [userFonts, setUserFonts] = useState({});
 
-  let { cssTextFeatures } = useContext(CssPropertiesContext);
+  let { cssTextFeatures, userFonts, setUserFonts } = useContext(CssPropertiesContext);
 
   const change = e => {
     update({ ...style, [e.target.name]: e.target.value });

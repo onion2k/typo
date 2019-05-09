@@ -38,6 +38,7 @@ export default function App() {
   let [background, setBackground] = useState("#ffffff");
   let [diff, setDiff] = useState(false);
   let [fontgrid, setFontgrid] = useState(false);
+  let [userFonts, setUserFonts] = useState({});
 
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultCopyState);
@@ -70,10 +71,6 @@ export default function App() {
     setBackground(background);
     setDiff(diff);
   };
-
-  // useEffect(() => {
-  //   console.log(copy);
-  // }, [copy]);
 
   return (
     <div className={"App"}>
@@ -129,7 +126,7 @@ export default function App() {
           </Splitscreen>
         )}
       </div>
-      <CssPropertiesContext.Provider value={{ cssTextFeatures }}>
+      <CssPropertiesContext.Provider value={{ cssTextFeatures, userFonts, setUserFonts }}>
         <Controller
           id={"original"}
           style={original}
