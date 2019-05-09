@@ -50,6 +50,8 @@ export default function Properties(data) {
             axes: vf.getAxes()
           }
         });
+        
+        console.log(userFonts)
 
         document.fonts.add(fontFace);
         updateFont(fontName, data.id === "original");

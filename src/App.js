@@ -38,7 +38,7 @@ export default function App() {
   let [background, setBackground] = useState("#ffffff");
   let [diff, setDiff] = useState(false);
   let [fontgrid, setFontgrid] = useState(false);
-  let [userFonts, setUserFonts] = useState({});
+  let [userFonts, setUserFonts] = useState({"movementv":{"axes":[{"tag":"wght","minValue":100,"defaultValue":100,"maxValue":900,"name":{"en":"Weight"}},{"tag":"SPAC","minValue":100,"defaultValue":100,"maxValue":120,"name":{"en":"Space"}}]}});
 
   let [original, setOriginal] = useState(defaultState);
   let [copy, setCopy] = useState(defaultCopyState);

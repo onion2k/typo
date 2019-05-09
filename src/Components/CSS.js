@@ -13,7 +13,7 @@ export default function CSS(data) {
     }
     return (
       <p key={s.name}>
-        {s.label}: {style[s.name]}
+        {s.label.toLowerCase()}: {style[s.name]};
       </p>
     );
   });
