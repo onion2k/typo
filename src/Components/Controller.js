@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Properties from "./Properties";
 import CSS from "./CSS";
+import Examples from "./Examples";
 import "./Controller.css";
 
 export default function Controller(data) {
@@ -9,10 +10,13 @@ export default function Controller(data) {
   const [view, setView] = useState("simplified");
 
   const renderProperties = () => {
-    if (view === "css") {
-      return <CSS {...data} />;
-    } else {
-      return <Properties {...data} view={view} />;
+    switch (view) {
+      case "css":
+        return <CSS {...data} />;
+      case "examples":
+        return <Examples {...data} />;
+      default:
+        return <Properties {...data} view={view} />;
     }
   };
 
@@ -24,13 +28,13 @@ export default function Controller(data) {
             <input
               type="radio"
               name={`view-${id}`}
-              value="css"
-              checked={view === "css"}
+              value="examples"
+              checked={view === "examples"}
               onChange={() => {
-                setView("css");
+                setView("examples");
               }}
             />{" "}
-            <span>View As CSS</span>
+            <span>Examples</span>
           </label>
         </div>
         <div>
@@ -57,6 +61,18 @@ export default function Controller(data) {
               }}
             />{" "}
             <span>All Properties</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name={`view-${id}`}
+              value="css"
+              checked={view === "css"}
+              onChange={() => {
+                setView("css");
+              }}
+            />{" "}
+            <span>View As CSS</span>
           </label>
         </div>
       </div>

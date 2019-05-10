@@ -8,7 +8,7 @@
   grid-gap: 0;
   align-items: center;
   z-index: 99;
-  height: calc(100% - 78px);
+  height: calc(100% - 80px);
   padding: 10px;
   overflow: scroll;
 }
